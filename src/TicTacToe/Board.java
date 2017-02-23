@@ -10,7 +10,7 @@ public class Board {
 		PLAYING, WIN, DRAW;
 	}
 	
-	private static final int inRow = 5;
+	private int inRow = 5;
 	private int row;
 	private int col;
 	private Symbol[][] board;
@@ -28,6 +28,10 @@ public class Board {
 				board[i][j] = Symbol.EMPTY;
 			}
 		}
+	}
+	
+	public void setWinCondition(int number) {
+		inRow = number;
 	}
 	
 	public boolean insert(Player player, Position p) {
@@ -55,30 +59,67 @@ public class Board {
 	}
 	
 	private boolean isWin(Player player, Position p) {
+		String compare = "";
 		String winCondition = "";
 		for (int i = 0; i < inRow; i++) {
 			winCondition += player.getSymbol();
 		}
 		
-		String row = "";
-		for (int i = 0; i < this.row; i++) {
-			row += board[i][p.y];
-		}
+		// row
+		if (isRowWin(winCondition, p)) return true;
 		
-		String col = "";
+		// column
+		if (isColWin(winCondition, p)) return true;
+		
+		// diag-left \
+		Position minLeftPos = toLeftMinimum(p);
+		if (isDiagLWin(winCondition, minLeftPos)) return true;
+		
+		// diag-right /
+		Position minRightPos = toRightMinimum(p);
+		if (isDiagRWin(winCondition, minRightPos)) return true;
+		
+		return false;
+	}
+	
+	private boolean isRowWin(String winCond, Position curr_pos) {
+		String compareCond = "";
+		for (int i = 0; i < row; i++) {
+			compareCond += board[i][curr_pos.y];
+		}
+		return compareCond.contains(winCond);
+	}
+	
+	private boolean isColWin(String winCond, Position curr_pos) {
+		String compareCond = "";
 		for (int i = 0; i < this.col; i++) {
-			col += board[p.x][i];
+			compareCond += board[curr_pos.x][i];
 		}
-		
-		String diag = "";
-		for (int i = 0; i < this.col; i++) {
-			for (int j = 0; j < this.row; j++) {
-				// do something
-			}
-			col += board[p.x][i];
+		return compareCond.contains(winCond);
+	}
+	
+	// diag-left \
+	private boolean isDiagLWin(String winCond, Position min_curr_pos) {
+		String compareCond = "";
+		while (isValid(min_curr_pos)) {
+			compareCond += board[min_curr_pos.x][min_curr_pos.y];
+			// next
+			min_curr_pos.setX(min_curr_pos.x + 1);
+			min_curr_pos.setY(min_curr_pos.y + 1);
 		}
-		
-		return row.contains(winCondition) || col.contains(winCondition) || diag.contains(winCondition);
+		return compareCond.contains(winCond);
+	}
+	
+	// diag-right /
+	private boolean isDiagRWin(String winCond, Position min_curr_pos) {
+		String compareCond = "";
+		while (isValid(min_curr_pos)) {
+			compareCond += board[min_curr_pos.x][min_curr_pos.y];
+			// next
+			min_curr_pos.setX(min_curr_pos.x + 1);
+			min_curr_pos.setY(min_curr_pos.y - 1);
+		}
+		return compareCond.contains(winCond);
 	}
 	
 	/**
@@ -88,17 +129,41 @@ public class Board {
 	 * 		position
 	 * @return true if in board size; otherwise, return false
 	 */
-	public boolean isValid(Position p) {
+	private boolean isValid(Position p) {
 		return p.x >= 0 && p.x < row && p.y >= 0 && p.y < col;
 	}
 	
-	public boolean isEmpty(Position p) {
+	private boolean isEmpty(Position p) {
 		return board[p.x][p.y] == Symbol.EMPTY;
+	}
+	
+	private Position toLeftMinimum(Position p) {
+		Position newPos = new Position(1, 1);
+		int max = Math.max(p.x, p.y);
+		if (max == p.x && max != p.y) {
+			newPos.setX(max - p.y);
+		} else if (max == p.y && max != p.x) {
+			newPos.setY(max - p.x);
+		}
+		return newPos;
+	}
+	
+	private Position toRightMinimum(Position p) {
+		Position newPos = p.clone();
+		while (newPos.x > 1 && newPos.y < col - 1) {
+			newPos.setX(newPos.x - 1);
+			newPos.setY(newPos.y + 1);
+		}
+		return newPos;
 	}
 	
 	@Override
 	public String toString() {
-		String output = "0 1 2 3 4 5 6 7 8 9 \n";
+		String output = "0";
+		for (int i = 1; i <= col; i++) {
+			output += " " + i;
+		}
+		output += "\n";
 		int i = 0;
 		for (Symbol[] symbols : board) {
 			output += ((++i) + " ");

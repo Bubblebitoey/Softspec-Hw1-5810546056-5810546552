@@ -44,7 +44,7 @@ public class Game implements Runnable {
 	
 	@Override
 	public void run() {
-		
+		System.out.println(board);
 		while (board.condition == Board.Condition.PLAYING) {
 			Position p = input();
 			if (p == null) System.out.println("Accepted only number");

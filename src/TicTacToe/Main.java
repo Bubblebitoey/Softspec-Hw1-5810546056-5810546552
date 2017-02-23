@@ -5,10 +5,13 @@ package TicTacToe;
  */
 public class Main {
 	public static void main(String[] args) {
-		Player p1 = new Player("p1", Symbol.O);
-		Player p2 = new Player("p2", Symbol.X);
+		Board b = new Board(Square.getSize(3));
+		b.setWinCondition(3);
 		
-		Game game = new Game(new Board(new Square()), p1, p2);
+		Player p1 = new Player("net", Symbol.O);
+		Player p2 = new Player("bitoey", Symbol.X);
+		
+		Game game = new Game(b, p1, p2);
 		game.run();
 	}
 }

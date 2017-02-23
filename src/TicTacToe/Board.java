@@ -82,6 +82,15 @@ public class Board {
 		return false;
 	}
 	
+	/**
+	 * check row win condition
+	 *
+	 * @param winCond
+	 * 		the win condition
+	 * @param curr_pos
+	 * 		the position that user insert their symbol
+	 * @return true if win by row condition; otherwise, false
+	 */
 	private boolean isRowWin(String winCond, Position curr_pos) {
 		String compareCond = "";
 		for (int i = 0; i < row; i++) {
@@ -90,6 +99,15 @@ public class Board {
 		return compareCond.contains(winCond);
 	}
 	
+	/**
+	 * check column win condition
+	 *
+	 * @param winCond
+	 * 		the win condition
+	 * @param curr_pos
+	 * 		the position that user insert their symbol
+	 * @return true if win by column condition; otherwise, false
+	 */
 	private boolean isColWin(String winCond, Position curr_pos) {
 		String compareCond = "";
 		for (int i = 0; i < this.col; i++) {
@@ -98,7 +116,15 @@ public class Board {
 		return compareCond.contains(winCond);
 	}
 	
-	// diag-left \
+	/**
+	 * check diag-left (\) win condition
+	 *
+	 * @param winCond
+	 * 		the win condition
+	 * @param min_curr_pos
+	 * 		the minimum location in board (x=0, y=0)
+	 * @return true if win by diag left (\) condition; otherwise, false
+	 */
 	private boolean isDiagLWin(String winCond, Position min_curr_pos) {
 		String compareCond = "";
 		while (isValid(min_curr_pos)) {
@@ -110,7 +136,15 @@ public class Board {
 		return compareCond.contains(winCond);
 	}
 	
-	// diag-right /
+	/**
+	 * check diag-right (/) win condition
+	 *
+	 * @param winCond
+	 * 		the win condition
+	 * @param min_curr_pos
+	 * 		the minimum location in board (x=0, y=board.y.size-1)
+	 * @return true if win by diag right (/) condition; otherwise, false
+	 */
 	private boolean isDiagRWin(String winCond, Position min_curr_pos) {
 		String compareCond = "";
 		while (isValid(min_curr_pos)) {
@@ -133,10 +167,23 @@ public class Board {
 		return p.x >= 0 && p.x < row && p.y >= 0 && p.y < col;
 	}
 	
+	/**
+	 * insert position must empty
+	 *
+	 * @param p
+	 * 		insert position
+	 * @return true, if empty; otherwise, return false
+	 */
 	private boolean isEmpty(Position p) {
 		return board[p.x][p.y] == Symbol.EMPTY;
 	}
 	
+	/**
+	 * getting smallest position in diag left (\)
+	 *
+	 * @param p
+	 * @return
+	 */
 	private Position toLeftMinimum(Position p) {
 		Position newPos = new Position(1, 1);
 		int max = Math.max(p.x, p.y);

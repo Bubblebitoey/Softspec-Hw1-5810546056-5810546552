@@ -1,31 +1,31 @@
 package com.player;
 
 /**
- * The position that represent the location of something in the board, or field <br>
+ * The position that represent the location of something in the board, or field.
  *
  * @author bubblebitoey
  * @since 2/23/2017 AD.
  */
 public class Position {
 	/**
-	 * Warning: This variable start from 0 <br>
+	 * Warning: This variable start from 0. <br>
 	 * this is variable that stand for <b>x-axis</b> in the board.
 	 */
 	public int x;
 	
 	/**
-	 * Warning: This variable start from 0
+	 * Warning: This variable start from 0. <br>
 	 * this is variable that stand for <b>y-axis</b> in the board.
 	 */
 	public int y;
 	
 	/**
-	 * insert coordinate (x, y) which start from (1, 1)
+	 * insert coordinate (x, y) which start from (1, 1).
 	 *
 	 * @param x
-	 * 		coordinate x start from 1
+	 * 		coordinate x start from 1.
 	 * @param y
-	 * 		coordinate y start from 1
+	 * 		coordinate y start from 1.
 	 */
 	public Position(int x, int y) {
 		this.x = x - 1;
@@ -34,11 +34,11 @@ public class Position {
 	}
 	
 	/**
-	 * Set the new x position <br>
-	 * If set negative or invalid number this will change to be <b>zero</b>
+	 * Set the new x position. <br>
+	 * If set negative or invalid number this will change to be <b>zero</b>.
 	 *
 	 * @param x
-	 * 		coordinate x that start from 0
+	 * 		coordinate x that start from 0.
 	 */
 	public void setX(int x) {
 		this.x = x;
@@ -46,11 +46,11 @@ public class Position {
 	}
 	
 	/**
-	 * Set the new y position <br>
-	 * If set negative or invalid number this will change to be <b>zero</b>
+	 * Set the new y position. <br>
+	 * If set negative or invalid number this will change to be <b>zero</b>.
 	 *
 	 * @param y
-	 * 		coordinate y that start from 0
+	 * 		coordinate y that start from 0.
 	 */
 	public void setY(int y) {
 		this.y = y;
@@ -58,7 +58,7 @@ public class Position {
 	}
 	
 	/**
-	 * x and y variable must be positive number ( > 0)
+	 * x and y variable must be positive number ( > 0).
 	 */
 	private void nonNegative() {
 		if (this.x < 0) this.x = 0;

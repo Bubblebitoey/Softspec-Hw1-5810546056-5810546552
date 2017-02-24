@@ -33,7 +33,7 @@ public class Game implements Runnable {
 	}
 	
 	private Position input() {
-		System.out.println(String.format("Player %s(%s)'s turn.", getCurrentPlayer(), getCurrentPlayer().getSymbol()));
+		System.out.println(String.format("Player %s's turn.", getCurrentPlayer()));
 		try {
 			System.out.print("Please select row: ");
 			int row = input.nextInt();

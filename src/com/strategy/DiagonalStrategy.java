@@ -1,7 +1,7 @@
-package TicTacToe.strategy;
+package com.strategy;
 
-import TicTacToe.board.Board;
-import TicTacToe.player.Position;
+import com.board.Board;
+import com.player.Position;
 
 /**
  * Check winner by <b>diagonal</b>, <br>

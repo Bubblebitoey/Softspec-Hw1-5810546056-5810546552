@@ -1,7 +1,7 @@
-package TicTacToe.strategy;
+package com.strategy;
 
-import TicTacToe.board.Board;
-import TicTacToe.player.Position;
+import com.board.Board;
+import com.player.Position;
 
 /**
  * Check winner by <b>row</b>.
@@ -33,9 +33,10 @@ public class RowStrategy extends WinStrategy {
 	 */
 	@Override
 	public boolean execute(Position p, String winCondition) {
+		Position newPos = p.clone();
 		String compareCond = "";
-		for (int i = 0; i < board.getRow(); i++) {
-			Position newPos = new Position(i, p.y);
+		for (int i = 0; i < board.getColumn(); i++) {
+			newPos.setY(i);
 			compareCond += board.getSymbol(newPos).toString();
 		}
 		return compareCond.contains(winCondition);

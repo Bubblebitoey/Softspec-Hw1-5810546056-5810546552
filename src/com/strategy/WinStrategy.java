@@ -1,7 +1,7 @@
-package TicTacToe.strategy;
+package com.strategy;
 
-import TicTacToe.board.Board;
-import TicTacToe.player.Position;
+import com.board.Board;
+import com.player.Position;
 
 /**
  * The win condition to win the game board

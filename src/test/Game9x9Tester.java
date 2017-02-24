@@ -48,6 +48,7 @@ public class Game9x9Tester {
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
+		
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(1, 9)));
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(1, 1)));
 		
@@ -68,6 +69,43 @@ public class Game9x9Tester {
 		Symbol getSymbol = b.getSymbol(new Position(1, 2));
 		
 		Assert.assertEquals(p2.getSymbol(), getSymbol);
+		Assert.assertFalse(b.isBoardFull());
+		
+		Assert.assertTrue(b.winner.equals(p1));
+	}
+	
+	@Test
+	public void dLTester() throws IOException {
+		final String testingFile = "dia_l.txt";
+		InputStream s = reader(testingFile);
+		
+		OXGame g = new OXGame(s, b, p1, p2);
+		try {
+			g.run();
+		} catch (NoSuchElementException e) {
+			Assert.fail("Game Must End when read file done");
+		}
+		
+		Assert.assertFalse(b.isBoardFull());
+		
+		Assert.assertTrue(b.winner.equals(p1));
+	}
+	
+	@Test
+	public void dRTester() throws IOException {
+		final String testingFile = "dia_r.txt";
+		InputStream s = reader(testingFile);
+		
+		OXGame g = new OXGame(s, b, p1, p2);
+		try {
+			g.run();
+		} catch (NoSuchElementException e) {
+			Assert.fail("Game Must End when read file done");
+		}
+		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Position(7, 7)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(6, 9)));
+		
+		Assert.assertTrue(b.isEmpty(new Position(5, 6)));
 		Assert.assertFalse(b.isBoardFull());
 		
 		Assert.assertTrue(b.winner.equals(p1));

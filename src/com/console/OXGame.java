@@ -116,13 +116,15 @@ public class OXGame implements Runnable {
 		System.out.println(board);
 		while (board.state == Board.State.PLAYING) {
 			Position p = input();
-			if (p == null) System.out.println("Accepted only number");
-			boolean isSuccess = board.insert(getCurrentPlayer(), p);
-			if (isSuccess) {
-				System.out.println(board);
-				if (board.state == Board.State.PLAYING) swapPlayer();
+			
+			if (p == null) {
+				System.out.println("Accepted only number");
 			} else {
-				System.out.println("Invalid row or column");
+				boolean success = board.insert(getCurrentPlayer(), p);
+				if (success) {
+					System.out.println(board);
+					if (board.state == Board.State.PLAYING) swapPlayer();
+				}
 			}
 		}
 		

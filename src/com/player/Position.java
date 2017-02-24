@@ -65,9 +65,14 @@ public class Position {
 		if (this.y < 0) this.y = 0;
 	}
 	
+	/**
+	 * get string of the position that start from (1, 1)
+	 *
+	 * @return position format string
+	 */
 	@Override
 	public String toString() {
-		return "Position(" + x + "," + y + ")";
+		return "Position(" + (x + 1) + "," + (y + 1) + ")";
 	}
 	
 	/**

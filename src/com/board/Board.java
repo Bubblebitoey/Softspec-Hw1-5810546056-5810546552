@@ -96,18 +96,30 @@ public class Board {
 	 * @return true, if insert complete; otherwise, return false.
 	 */
 	public boolean insert(Player player, Position p) {
-		if (isValid(p) && isEmpty(p)) {
-			board[p.x][p.y] = player.getSymbol();
-			
-			if (isBoardFull()) state = State.DRAW;
-			else if (isWin(player, p)) {
-				state = State.WIN;
-				winner = player;
-			}
-			
-			return true;
+		if (p == null) {
+			System.err.println("Invalid position.");
+			return false;
 		}
-		return false;
+		if (!isValid(p)) {
+			System.err.println(p + " is out of board size.");
+			return false;
+		}
+		if (!isEmpty(p)) {
+			System.err.println(p + " is not empty location.");
+			return false;
+		}
+		
+		board[p.x][p.y] = player.getSymbol();
+		
+		// change board state.
+		if (isBoardFull()) {
+			state = State.DRAW;
+		} else if (checkWin(player, p)) {
+			state = State.WIN;
+			winner = player;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -134,7 +146,7 @@ public class Board {
 	 *
 	 * @return true, if board already fulled; otherwise return false.
 	 */
-	private boolean isBoardFull() {
+	public boolean isBoardFull() {
 		for (Symbol[] symbols : board) {
 			for (Symbol symbol : symbols) {
 				if (symbol == Symbol.EMPTY) return false;
@@ -153,13 +165,12 @@ public class Board {
 	 * 		the position that player playing.
 	 * @return true if this player already win.
 	 */
-	private boolean isWin(Player player, Position p) {
+	private boolean checkWin(Player player, Position p) {
 		String compare = "";
 		String winCondition = "";
 		for (int i = 0; i < inRow; i++) {
 			winCondition += player.getSymbol();
 		}
-		
 		return new RowStrategy(this).execute(p, winCondition) || new ColumnStrategy(this).execute(p, winCondition) || new DiagonalStrategy(this).execute(p, winCondition);
 	}
 	
@@ -171,7 +182,7 @@ public class Board {
 	 * @return true if in board size; otherwise, return false.
 	 */
 	public boolean isValid(Position p) {
-		return p.x >= 0 && p.x < row && p.y >= 0 && p.y < column;
+		return p != null && p.x >= 0 && p.x < row && p.y >= 0 && p.y < column;
 	}
 	
 	/**
@@ -181,7 +192,7 @@ public class Board {
 	 * 		insert position.
 	 * @return true, if empty; otherwise, return false.
 	 */
-	private boolean isEmpty(Position p) {
+	public boolean isEmpty(Position p) {
 		return board[p.x][p.y] == Symbol.EMPTY;
 	}
 	

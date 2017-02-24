@@ -11,21 +11,19 @@ import java.util.*;
  */
 public class Game implements Runnable {
 	private Board board;
-	private Player current;
-	private Player player1;
-	private Player player2;
+	private int currentPlayer;
+	private Player[] players;
 	
-	public Game(Board board, Player p1, Player p2) {
+	public Game(Board board, Player... players) {
 		this.board = board;
-		player1 = current = p1;
-		player2 = p2;
+		this.players = players;
 	}
 	
 	private Position input() {
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println();
-		System.out.println(String.format("Player %s(%s)'s turn.", current, current.getSymbol()));
+		System.out.println(String.format("Player %s(%s)'s turn.", getCurrentPlayer(), getCurrentPlayer().getSymbol()));
 		try {
 			System.out.print("Please select row: ");
 			int row = input.nextInt();
@@ -39,11 +37,14 @@ public class Game implements Runnable {
 	}
 	
 	private void swapPlayer() {
-		if (current.equals(player1)) {
-			current = player2;
-		} else if (current.equals(player2)) {
-			current = player1;
-		}
+		// next
+		currentPlayer++;
+		// if out of player length
+		if (currentPlayer == players.length) currentPlayer = 0;
+	}
+	
+	private Player getCurrentPlayer() {
+		return players[currentPlayer];
 	}
 	
 	@Override
@@ -52,7 +53,7 @@ public class Game implements Runnable {
 		while (board.state == Board.Condition.PLAYING) {
 			Position p = input();
 			if (p == null) System.out.println("Accepted only number");
-			boolean isSuccess = board.insert(current, p);
+			boolean isSuccess = board.insert(getCurrentPlayer(), p);
 			if (isSuccess) {
 				System.out.println(board);
 				if (board.state == Board.Condition.PLAYING) swapPlayer();

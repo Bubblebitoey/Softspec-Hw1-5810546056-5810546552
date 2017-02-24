@@ -19,10 +19,12 @@ public class Main {
 	public static void main(String[] args) {
 		Board b = new Board(Square.getDefaultSize());
 		
-		Player p1 = new Player("net", Symbol.O);
-		Player p2 = new Player("bitoey", Symbol.X);
+		Player p1 = new Player("p1", Symbol.O);
+		Player p2 = new Player("p2", Symbol.X);
 		
 		OXGame game = new OXGame(b, p1, p2);
 		game.run();
+		
+		b.printHistory();
 	}
 }

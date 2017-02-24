@@ -1,6 +1,7 @@
 package com.board;
 
 import com.board.shape.Shape;
+import com.history.BoardHistory;
 import com.player.Player;
 import com.player.Position;
 import com.player.Symbol;
@@ -39,6 +40,7 @@ public class Board {
 	 */
 	private int inRow;
 	
+	private BoardHistory history = BoardHistory.getInstance();
 	private Symbol[][] board;
 	private int row;
 	private int column;
@@ -119,6 +121,7 @@ public class Board {
 			winner = player;
 		}
 		
+		history.addNewHistory(this, player, p);
 		return true;
 	}
 	
@@ -193,9 +196,12 @@ public class Board {
 	 * @return true, if empty; otherwise, return false.
 	 */
 	public boolean isEmpty(Position p) {
-		return board[p.x][p.y] == Symbol.EMPTY;
+		return isValid(p) && board[p.x][p.y] == Symbol.EMPTY;
 	}
 	
+	public void printHistory() {
+		System.out.println(history.toString());
+	}
 	
 	@Override
 	public String toString() {

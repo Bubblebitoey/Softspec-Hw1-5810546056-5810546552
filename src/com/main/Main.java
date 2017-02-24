@@ -2,7 +2,7 @@ package com.main;
 
 import com.board.Board;
 import com.board.shape.Square;
-import com.console.Game;
+import com.console.OXGame;
 import com.player.Player;
 import com.player.Symbol;
 
@@ -22,7 +22,7 @@ public class Main {
 		Player p1 = new Player("net", Symbol.O);
 		Player p2 = new Player("bitoey", Symbol.X);
 		
-		Game game = new Game(b, p1, p2);
+		OXGame game = new OXGame(b, p1, p2);
 		game.run();
 	}
 }

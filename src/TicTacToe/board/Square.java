@@ -1,4 +1,4 @@
-package TicTacToe;
+package TicTacToe.board;
 
 /**
  * Created by bubblebitoey on 2/23/2017 AD.

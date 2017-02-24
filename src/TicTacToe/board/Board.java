@@ -1,6 +1,10 @@
-package TicTacToe;
+package TicTacToe.board;
 
-import static TicTacToe.Board.Condition.PLAYING;
+import TicTacToe.player.Player;
+import TicTacToe.player.Position;
+import TicTacToe.player.Symbol;
+
+import static TicTacToe.board.Board.Condition.PLAYING;
 
 /**
  * Created by bubblebitoey on 2/23/2017 AD.
@@ -11,20 +15,36 @@ public class Board {
 	}
 	
 	private int inRow = 5;
-	private int row;
-	private int col;
+	
 	private Symbol[][] board;
-	public Condition condition = PLAYING;
+	private int row;
+	private int column;
+	
+	public Condition state = PLAYING;
 	public Player winner;
 	
 	public Board(Square s) {
 		this.row = s.row;
-		this.col = s.column;
-		board = new Symbol[row][col];
+		this.column = s.column;
+		board = new Symbol[row][column];
 		
 		// init board
 		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
+			for (int j = 0; j < column; j++) {
+				board[i][j] = Symbol.EMPTY;
+			}
+		}
+	}
+	
+	public Board(Square s, int winCondition) {
+		this.row = s.row;
+		this.column = s.column;
+		board = new Symbol[row][column];
+		this.inRow = winCondition;
+		
+		// init board
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
 				board[i][j] = Symbol.EMPTY;
 			}
 		}
@@ -38,9 +58,9 @@ public class Board {
 		if (isValid(p) && isEmpty(p)) {
 			board[p.x][p.y] = player.getSymbol();
 			
-			if (!isBoardEmpty()) condition = Condition.DRAW;
+			if (!isBoardEmpty()) state = Condition.DRAW;
 			else if (isWin(player, p)) {
-				condition = Condition.WIN;
+				state = Condition.WIN;
 				winner = player;
 			}
 			
@@ -72,24 +92,24 @@ public class Board {
 		if (isColWin(winCondition, p)) return true;
 		
 		// diag-left \
-		Position minLeftPos = toLeftMinimum(p);
-		if (isDiagLWin(winCondition, minLeftPos)) return true;
-		
-		// diag-right /
 		Position minRightPos = toRightMinimum(p);
 		if (isDiagRWin(winCondition, minRightPos)) return true;
+		
+		// diag-right /
+		Position minLeftPos = toLeftMinimum(p);
+		if (isDiagLWin(winCondition, minLeftPos)) return true;
 		
 		return false;
 	}
 	
 	/**
-	 * check row win condition
+	 * check row win state
 	 *
 	 * @param winCond
-	 * 		the win condition
+	 * 		the win state
 	 * @param curr_pos
 	 * 		the position that user insert their symbol
-	 * @return true if win by row condition; otherwise, false
+	 * @return true if win by row state; otherwise, false
 	 */
 	private boolean isRowWin(String winCond, Position curr_pos) {
 		String compareCond = "";
@@ -100,32 +120,32 @@ public class Board {
 	}
 	
 	/**
-	 * check column win condition
+	 * check column win state
 	 *
 	 * @param winCond
-	 * 		the win condition
+	 * 		the win state
 	 * @param curr_pos
 	 * 		the position that user insert their symbol
-	 * @return true if win by column condition; otherwise, false
+	 * @return true if win by column state; otherwise, false
 	 */
 	private boolean isColWin(String winCond, Position curr_pos) {
 		String compareCond = "";
-		for (int i = 0; i < this.col; i++) {
+		for (int i = 0; i < this.column; i++) {
 			compareCond += board[curr_pos.x][i];
 		}
 		return compareCond.contains(winCond);
 	}
 	
 	/**
-	 * check diag-left (\) win condition
+	 * check diag-left (\) win state
 	 *
 	 * @param winCond
-	 * 		the win condition
+	 * 		the win state
 	 * @param min_curr_pos
 	 * 		the minimum location in board (x=0, y=0)
-	 * @return true if win by diag left (\) condition; otherwise, false
+	 * @return true if win by diag left (\) state; otherwise, false
 	 */
-	private boolean isDiagLWin(String winCond, Position min_curr_pos) {
+	private boolean isDiagRWin(String winCond, Position min_curr_pos) {
 		String compareCond = "";
 		while (isValid(min_curr_pos)) {
 			compareCond += board[min_curr_pos.x][min_curr_pos.y];
@@ -137,15 +157,15 @@ public class Board {
 	}
 	
 	/**
-	 * check diag-right (/) win condition
+	 * check diag-right (/) win state
 	 *
 	 * @param winCond
-	 * 		the win condition
+	 * 		the win state
 	 * @param min_curr_pos
 	 * 		the minimum location in board (x=0, y=board.y.size-1)
-	 * @return true if win by diag right (/) condition; otherwise, false
+	 * @return true if win by diag right (/) state; otherwise, false
 	 */
-	private boolean isDiagRWin(String winCond, Position min_curr_pos) {
+	private boolean isDiagLWin(String winCond, Position min_curr_pos) {
 		String compareCond = "";
 		while (isValid(min_curr_pos)) {
 			compareCond += board[min_curr_pos.x][min_curr_pos.y];
@@ -157,6 +177,41 @@ public class Board {
 	}
 	
 	/**
+	 * getting smallest position in diag right (position that most top right)
+	 *
+	 * @param p
+	 * 		current position that want to minimise it
+	 * @return the minimise position to left
+	 */
+	private Position toRightMinimum(Position p) {
+		Position newPos = new Position(1, 1);
+		int max = Math.max(p.x, p.y);
+		if (max == p.x && max != p.y) {
+			newPos.setX(max - p.y);
+		} else if (max == p.y && max != p.x) {
+			newPos.setY(max - p.x);
+		}
+		return newPos;
+	}
+	
+	
+	/**
+	 * getting smallest position in diag left (position that most top left)
+	 *
+	 * @param p
+	 * 		current position that want to maximize it
+	 * @return the maximize position to left
+	 */
+	private Position toLeftMinimum(Position p) {
+		Position newPos = p.clone();
+		while (newPos.x > 1 && newPos.y < column - 1) {
+			newPos.setX(newPos.x - 1);
+			newPos.setY(newPos.y + 1);
+		}
+		return newPos;
+	}
+	
+	/**
 	 * must in board size
 	 *
 	 * @param p
@@ -164,7 +219,7 @@ public class Board {
 	 * @return true if in board size; otherwise, return false
 	 */
 	private boolean isValid(Position p) {
-		return p.x >= 0 && p.x < row && p.y >= 0 && p.y < col;
+		return p.x >= 0 && p.x < row && p.y >= 0 && p.y < column;
 	}
 	
 	/**
@@ -178,36 +233,11 @@ public class Board {
 		return board[p.x][p.y] == Symbol.EMPTY;
 	}
 	
-	/**
-	 * getting smallest position in diag left (\)
-	 *
-	 * @param p
-	 * @return
-	 */
-	private Position toLeftMinimum(Position p) {
-		Position newPos = new Position(1, 1);
-		int max = Math.max(p.x, p.y);
-		if (max == p.x && max != p.y) {
-			newPos.setX(max - p.y);
-		} else if (max == p.y && max != p.x) {
-			newPos.setY(max - p.x);
-		}
-		return newPos;
-	}
-	
-	private Position toRightMinimum(Position p) {
-		Position newPos = p.clone();
-		while (newPos.x > 1 && newPos.y < col - 1) {
-			newPos.setX(newPos.x - 1);
-			newPos.setY(newPos.y + 1);
-		}
-		return newPos;
-	}
 	
 	@Override
 	public String toString() {
 		String output = "0";
-		for (int i = 1; i <= col; i++) {
+		for (int i = 1; i <= column; i++) {
 			output += " " + i;
 		}
 		output += "\n";

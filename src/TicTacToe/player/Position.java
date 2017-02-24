@@ -1,4 +1,4 @@
-package TicTacToe;
+package TicTacToe.player;
 
 /**
  * Created by bubblebitoey on 2/23/2017 AD.
@@ -42,10 +42,7 @@ public class Position {
 	}
 	
 	@Override
-	protected Position clone() {
-		Position p = new Position(0, 0);
-		p.setX(x);
-		p.setY(y);
-		return p;
+	public Position clone() {
+		return new Position(x + 1, y + 1);
 	}
 }

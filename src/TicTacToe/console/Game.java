@@ -1,4 +1,8 @@
-package TicTacToe;
+package TicTacToe.console;
+
+import TicTacToe.board.Board;
+import TicTacToe.player.Player;
+import TicTacToe.player.Position;
 
 import java.util.*;
 
@@ -45,21 +49,21 @@ public class Game implements Runnable {
 	@Override
 	public void run() {
 		System.out.println(board);
-		while (board.condition == Board.Condition.PLAYING) {
+		while (board.state == Board.Condition.PLAYING) {
 			Position p = input();
 			if (p == null) System.out.println("Accepted only number");
 			boolean isSuccess = board.insert(current, p);
 			if (isSuccess) {
 				System.out.println(board);
-				if (board.condition == Board.Condition.PLAYING) swapPlayer();
+				if (board.state == Board.Condition.PLAYING) swapPlayer();
 			} else {
 				System.out.println("Invalid row or column");
 			}
 		}
 		
-		if (board.condition == Board.Condition.DRAW) {
+		if (board.state == Board.Condition.DRAW) {
 			System.out.println("Draw.");
-		} else if (board.condition == Board.Condition.WIN) {
+		} else if (board.state == Board.Condition.WIN) {
 			System.out.println(board.winner + " winner.");
 		}
 	}

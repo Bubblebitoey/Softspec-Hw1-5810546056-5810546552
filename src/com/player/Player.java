@@ -1,4 +1,4 @@
-package TicTacToe.player;
+package com.player;
 
 /**
  * Created by bubblebitoey on 2/23/2017 AD.

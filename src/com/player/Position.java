@@ -1,4 +1,4 @@
-package TicTacToe.player;
+package com.player;
 
 /**
  * The position that represent the location of something in the board, or field <br>

@@ -2,7 +2,7 @@ package test;
 
 import com.board.Board;
 import com.board.shape.Square;
-import com.console.Game;
+import com.console.OXGame;
 import com.player.Player;
 import com.player.Symbol;
 import org.junit.Assert;
@@ -35,7 +35,7 @@ public class GameTest {
 		// read file
 		InputStream s = reader(testingFile);
 		
-		Game g = new Game(s, b, p1, p2);
+		OXGame g = new OXGame(s, b, p1, p2);
 		try {
 			g.run();
 		} catch (NoSuchElementException e) {

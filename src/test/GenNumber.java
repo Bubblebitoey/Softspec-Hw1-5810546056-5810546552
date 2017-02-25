@@ -1,5 +1,7 @@
 package test;
 
+import com.main.Main;
+
 /**
  * @author kamontat
  * @version 1.0
@@ -15,8 +17,15 @@ public class GenNumber {
 	}
 	
 	public static void main(String[] args) {
-		for (int num : gen(99, 9)) {
-			System.out.printf("%s ", num);
+		boolean i = true;
+		for (int num : gen(120, Main.s.getRow())) {
+			if (i) {
+				System.out.printf("%s ", num);
+				i = false;
+			} else {
+				System.out.printf("%s \n", num);
+				i = true;
+			}
 		}
 	}
 }

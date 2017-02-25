@@ -1,8 +1,8 @@
 package com.history;
 
 import com.board.Board;
+import com.player.Location;
 import com.player.Player;
-import com.player.Position;
 
 import java.time.LocalDateTime;
 
@@ -15,9 +15,9 @@ public class Triple {
 	private Board board;
 	private Player player;
 	private LocalDateTime time;
-	private Position position;
+	private Location position;
 	
-	Triple(Board board, Player player, Position position) {
+	Triple(Board board, Player player, Location position) {
 		this.board = board;
 		this.player = player;
 		this.position = position;
@@ -36,7 +36,7 @@ public class Triple {
 		return time;
 	}
 	
-	public Position getPosition() {
+	public Location getPosition() {
 		return position;
 	}
 }

@@ -1,8 +1,8 @@
 package com.console;
 
 import com.board.Board;
+import com.player.Location;
 import com.player.Player;
-import com.player.Position;
 
 import java.io.InputStream;
 import java.util.*;
@@ -74,7 +74,7 @@ public class OXGame implements Runnable {
 	 *
 	 * @return the position that parse from the input.
 	 */
-	private Position input() {
+	private Location input() {
 		System.out.println(String.format("Player %s's turn.", getCurrentPlayer()));
 		try {
 			System.out.print("Please select row: ");
@@ -83,8 +83,9 @@ public class OXGame implements Runnable {
 			System.out.print("Please select column: ");
 			int col = input.nextInt();
 			
-			return new Position(row, col);
+			return new Location(row, col);
 		} catch (InputMismatchException e) {
+			input.nextLine();
 			return null;
 		}
 	}
@@ -115,10 +116,10 @@ public class OXGame implements Runnable {
 	public void run() {
 		System.out.println(board);
 		while (board.state == Board.State.PLAYING) {
-			Position p = input();
+			Location p = input();
 			
 			if (p == null) {
-				System.out.println("Accepted only number");
+				System.err.println("Accepted only number");
 			} else {
 				boolean success = board.insert(getCurrentPlayer(), p);
 				if (success) {

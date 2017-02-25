@@ -3,7 +3,7 @@ package com.board;
 import com.board.shape.Shape;
 import com.history.BoardHistory;
 import com.player.Player;
-import com.player.Position;
+import com.player.Location;
 import com.player.Symbol;
 import com.strategy.ColumnStrategy;
 import com.strategy.DiagonalStrategy;
@@ -15,7 +15,7 @@ import static com.board.Board.State.PLAYING;
  * The board of the game that created by {@link com.board.shape.Shape Shape} class. <br>
  * In the board you can do:
  * <ol>
- * <li>{@link #insert(Player, Position)} - insert some symbol to that position.</li>
+ * <li>{@link #insert(Player, Location)} - insert some symbol to that position.</li>
  * <li>{@link #toString()} - to get board in beautiful way to print.</li>
  * </ol>
  *
@@ -89,7 +89,7 @@ public class Board {
 	}
 	
 	/**
-	 * Insert the player symbol ({@link Player#getSymbol()}) at position {@link Position p} in the board.
+	 * Insert the player symbol ({@link Player#getSymbol()}) at position {@link Location p} in the board.
 	 *
 	 * @param player
 	 * 		the current playing player.
@@ -97,7 +97,7 @@ public class Board {
 	 * 		the position.
 	 * @return true, if insert complete; otherwise, return false.
 	 */
-	public boolean insert(Player player, Position p) {
+	public boolean insert(Player player, Location p) {
 		if (p == null) {
 			System.err.println("Invalid position.");
 			return false;
@@ -111,7 +111,7 @@ public class Board {
 			return false;
 		}
 		
-		board[p.x][p.y] = player.getSymbol();
+		board[p.row][p.col] = player.getSymbol();
 		
 		// change board state.
 		if (isBoardFull()) {
@@ -126,14 +126,14 @@ public class Board {
 	}
 	
 	/**
-	 * get the symbol in the board by {@link Position position}.
+	 * get the symbol in the board by {@link Location position}.
 	 *
 	 * @param position
 	 * 		the position that want to get symbol.
 	 * @return Symbol at that position.
 	 */
-	public Symbol getSymbol(Position position) {
-		return board[position.x][position.y];
+	public Symbol getSymbol(Location position) {
+		return board[position.row][position.col];
 	}
 	
 	public int getRow() {
@@ -168,7 +168,7 @@ public class Board {
 	 * 		the position that player playing.
 	 * @return true if this player already win.
 	 */
-	private boolean checkWin(Player player, Position p) {
+	private boolean checkWin(Player player, Location p) {
 		String compare = "";
 		String winCondition = "";
 		for (int i = 0; i < inRow; i++) {
@@ -184,8 +184,8 @@ public class Board {
 	 * 		position.
 	 * @return true if in board size; otherwise, return false.
 	 */
-	public boolean isValid(Position p) {
-		return p != null && p.x >= 0 && p.x < row && p.y >= 0 && p.y < column;
+	public boolean isValid(Location p) {
+		return p != null && p.row >= 0 && p.row < row && p.col >= 0 && p.col < column;
 	}
 	
 	/**
@@ -195,8 +195,8 @@ public class Board {
 	 * 		insert position.
 	 * @return true, if empty; otherwise, return false.
 	 */
-	public boolean isEmpty(Position p) {
-		return isValid(p) && board[p.x][p.y] == Symbol.EMPTY;
+	public boolean isEmpty(Location p) {
+		return isValid(p) && board[p.row][p.col] == Symbol.EMPTY;
 	}
 	
 	public void printHistory() {

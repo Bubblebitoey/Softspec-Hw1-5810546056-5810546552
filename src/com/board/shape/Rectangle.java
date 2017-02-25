@@ -13,9 +13,9 @@ public class Rectangle extends Shape {
 	 * The private constructor that call {@link Shape#Shape(int, int) Shape(row, col)} constructor.
 	 *
 	 * @param row
-	 * 		row(x-axis) of the rectangle.
+	 * 		row(y-axis) of the rectangle.
 	 * @param column
-	 * 		column(y-axis) of the rectangle.
+	 * 		column(x-axis) of the rectangle.
 	 */
 	private Rectangle(int row, int column) {
 		super(row, column);
@@ -33,9 +33,9 @@ public class Rectangle extends Shape {
 	 * get Rectangle with any size by parameters.
 	 *
 	 * @param row
-	 * 		row(x-axis) of the rectangle.
+	 * 		row(y-axis) of the rectangle.
 	 * @param column
-	 * 		column(y-axis) of the rectangle.
+	 * 		column(x-axis) of the rectangle.
 	 * @return square
 	 */
 	public static Rectangle getSize(int row, int column) {

@@ -1,7 +1,7 @@
 package com.strategy;
 
 import com.board.Board;
-import com.player.Position;
+import com.player.Location;
 
 /**
  * Check winner by <b>diagonal</b>, <br>
@@ -30,35 +30,36 @@ public class DiagonalStrategy extends WinStrategy {
 	}
 	
 	/**
-	 * getting smallest position in diag right (position that most top right).
+	 * getting smallest position in diag left (position that most top left).
 	 *
 	 * @param p
 	 * 		current position that want to minimise it.
 	 * @return the minimise position to left.
 	 */
-	private Position toRightMinimum(Position p) {
-		Position newPos = new Position(1, 1);
-		int max = Math.max(p.x, p.y);
-		if (max == p.x && max != p.y) {
-			newPos.setX(max - p.y);
-		} else if (max == p.y && max != p.x) {
-			newPos.setY(max - p.x);
+	private Location toLeftMinimum(Location p) {
+		Location newPos = new Location(1, 1);
+		int max = Math.max(p.row, p.col);
+		if (max == p.row && max != p.col) {
+			newPos.setRow(max - p.col);
+		} else if (max == p.col && max != p.row) {
+			newPos.setCol(max - p.row);
 		}
 		return newPos;
 	}
 	
 	/**
-	 * getting smallest position in diag left (position that most top left).
+	 * getting smallest position in diag right (position that most top right).
 	 *
 	 * @param p
 	 * 		current position that want to maximize it.
-	 * @return the maximize position to left.
+	 * @return the maximize position to right.
 	 */
-	private Position toLeftMinimum(Position p) {
-		Position newPos = p.clone();
-		while (newPos.x > 1 && newPos.y < board.getColumn() - 1) {
-			newPos.setX(newPos.x - 1);
-			newPos.setY(newPos.y + 1);
+	private Location toRightMinimum(Location p) {
+		Location newPos = p.clone();
+		
+		while (newPos.row > 0 && newPos.col < board.getColumn() - 1) {
+			newPos.setRow(newPos.row - 1);
+			newPos.setCol(newPos.col + 1);
 		}
 		return newPos;
 	}
@@ -74,9 +75,9 @@ public class DiagonalStrategy extends WinStrategy {
 	 * 		the direction that want to check condition (\ or /).
 	 * @return true player insert finish and he/she will win; otherwise, false.
 	 */
-	private boolean isWin(Position p, String winCond, Direction d) {
+	private boolean isWin(Location p, String winCond, Direction d) {
 		String compareCond = "";
-		Position min;
+		Location min;
 		
 		if (d == Direction.LEFT) {
 			min = toLeftMinimum(p);
@@ -88,11 +89,13 @@ public class DiagonalStrategy extends WinStrategy {
 			compareCond += board.getSymbol(min);
 			
 			if (d == Direction.LEFT) {
-				min.setX(min.x + 1);
-				min.setY(min.y - 1);
+				// next (down right)
+				min.setRow(min.row + 1);
+				min.setCol(min.col + 1);
 			} else {
-				min.setX(min.x + 1);
-				min.setY(min.y + 1);
+				// next (down left)
+				min.setRow(min.row + 1);
+				min.setCol(min.col - 1);
 			}
 		}
 		return compareCond.contains(winCond);
@@ -108,7 +111,7 @@ public class DiagonalStrategy extends WinStrategy {
 	 * @return true if win with diagonal win condition; otherwise, false.
 	 */
 	@Override
-	public boolean execute(Position p, String winCondition) {
+	public boolean execute(Location p, String winCondition) {
 		return isWin(p, winCondition, Direction.LEFT) || isWin(p, winCondition, Direction.RIGHT);
 	}
 }

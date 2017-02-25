@@ -1,7 +1,7 @@
 package com.strategy;
 
 import com.board.Board;
-import com.player.Position;
+import com.player.Location;
 
 /**
  * The win condition to win the game board
@@ -32,5 +32,5 @@ public abstract class WinStrategy {
 	 * 		the win condition that make player became winner if match this parameter
 	 * @return return true, if player who insert the symbol became winner; otherwise return false
 	 */
-	public abstract boolean execute(Position p, String winCondition);
+	public abstract boolean execute(Location p, String winCondition);
 }

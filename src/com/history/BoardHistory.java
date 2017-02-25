@@ -1,8 +1,8 @@
 package com.history;
 
 import com.board.Board;
+import com.player.Location;
 import com.player.Player;
-import com.player.Position;
 
 import java.util.*;
 
@@ -24,7 +24,7 @@ public class BoardHistory {
 		lists = new ArrayList<>();
 	}
 	
-	public void addNewHistory(Board board, Player player, Position p) {
+	public void addNewHistory(Board board, Player player, Location p) {
 		lists.add(new Triple(board, player, p));
 	}
 	
@@ -37,7 +37,7 @@ public class BoardHistory {
 		String out = "";
 		for (Triple t : lists) {
 			//			out += String.format("player: %s %s \n%s", t.getPlayer(), t.getPosition(), t.getTime());
-			out += String.format("%d %d", t.getPosition().x + 1, t.getPosition().y + 1);
+			out += String.format("%d %d", t.getPosition().row + 1, t.getPosition().col + 1);
 			out += "\n";
 		}
 		return out;

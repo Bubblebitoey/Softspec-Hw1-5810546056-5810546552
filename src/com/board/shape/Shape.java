@@ -25,9 +25,9 @@ public abstract class Shape {
 	 * create the shape with any size by parameters.
 	 *
 	 * @param row
-	 * 		The <b>row</b> or <b>width</b> or <b>x-axis</b>.
+	 * 		The <b>row</b> or <b>width</b> or <b>y-axis</b>.
 	 * @param column
-	 * 		The <b>column</b> or <b>height</b> or <b>y-axis</b>.
+	 * 		The <b>column</b> or <b>height</b> or <b>x-axis</b>.
 	 */
 	protected Shape(int row, int column) {
 		this.row = row;

@@ -1,7 +1,7 @@
 package com.strategy;
 
 import com.board.Board;
-import com.player.Position;
+import com.player.Location;
 
 /**
  * Check winner by <b>row</b>.
@@ -32,11 +32,11 @@ public class RowStrategy extends WinStrategy {
 	 * @return true if win with row win condition; otherwise, false.
 	 */
 	@Override
-	public boolean execute(Position p, String winCondition) {
-		Position newPos = p.clone();
+	public boolean execute(Location p, String winCondition) {
+		Location newPos = p.clone();
 		String compareCond = "";
 		for (int i = 0; i < board.getColumn(); i++) {
-			newPos.setY(i);
+			newPos.setCol(i);
 			compareCond += board.getSymbol(newPos).toString();
 		}
 		return compareCond.contains(winCondition);

@@ -4,6 +4,7 @@ import com.board.Board;
 import com.board.shape.Shape;
 import com.board.shape.Square;
 import com.console.OXGame;
+import com.player.Location;
 import com.player.Player;
 import com.player.Symbol;
 import org.junit.Assert;
@@ -34,7 +35,7 @@ public class Game30x30Tester {
 	
 	@Before
 	public void setBoard() {
-		b = new Board(s, 9);
+		b = new Board(s, 10);
 	}
 	
 	@Test
@@ -49,6 +50,12 @@ public class Game30x30Tester {
 			Assert.fail("Game Must End when read file done");
 		}
 		
-		// TODO 2/25/2017 AD 11:24 PM add more test
+		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Location(17, 6)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(25, 27)));
+		
+		Assert.assertTrue(b.isEmpty(new Location(14, 4)));
+		Assert.assertFalse(b.isBoardFull());
+		
+		Assert.assertTrue(b.winner.equals(p1));
 	}
 }

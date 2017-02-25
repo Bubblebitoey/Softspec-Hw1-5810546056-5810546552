@@ -114,11 +114,11 @@ public class Board {
 		board[p.row][p.col] = player.getSymbol();
 		
 		// change board state.
-		if (isBoardFull()) {
-			state = State.DRAW;
-		} else if (checkWin(player, p)) {
+		if (checkWin(player, p)) {
 			state = State.WIN;
 			winner = player;
+		} else if (isBoardFull()) {
+			state = State.DRAW;
 		}
 		
 		history.addNewHistory(this, player, p);

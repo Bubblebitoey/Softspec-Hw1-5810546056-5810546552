@@ -26,6 +26,7 @@ import static com.board.Board.State.PLAYING;
  * </ol>
  *
  * @author bubblebitoey
+ * @version 3.2.1
  * @since 2/23/2017 AD.
  */
 public class Board {

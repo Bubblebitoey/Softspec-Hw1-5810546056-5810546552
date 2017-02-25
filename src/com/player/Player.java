@@ -9,6 +9,7 @@ package com.player;
  * </ul>
  *
  * @author bubblebitoey
+ * @version 1.0.1
  * @since 2/23/2017 AD.
  */
 public class Player {

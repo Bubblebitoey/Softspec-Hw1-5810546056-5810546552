@@ -4,6 +4,7 @@ package com.player;
  * The enum that represent the symbol of the player.
  *
  * @author bubblebitoey
+ * @version 1.1
  * @since 2/23/2017 AD.
  */
 public enum Symbol {

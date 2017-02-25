@@ -4,6 +4,7 @@ package com.player;
  * The location of something in the board, or field.
  *
  * @author bubblebitoey
+ * @version 3.1.1
  * @since 2/23/2017 AD.
  */
 public class Location {

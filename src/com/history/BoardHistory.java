@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * @author kamontat
- * @version 1.0
+ * @version 1.1
  * @since Sat 25/Feb/2017 - 2:28 AM
  */
 public class BoardHistory {

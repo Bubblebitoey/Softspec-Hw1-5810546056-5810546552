@@ -7,7 +7,7 @@ import com.player.Location;
  * Check winner by <b>row</b>.
  *
  * @author kamontat
- * @version 1.0
+ * @version 1.0.1
  * @since 2/24/2017 AD - 9:59 PM
  */
 public class RowStrategy extends WinStrategy {
@@ -25,15 +25,15 @@ public class RowStrategy extends WinStrategy {
 	/**
 	 * Check the row.
 	 *
-	 * @param p
+	 * @param l
 	 * 		the position that user insert their symbol.
 	 * @param winCondition
 	 * 		the win condition.
 	 * @return true if win with row win condition; otherwise, false.
 	 */
 	@Override
-	public boolean execute(Location p, String winCondition) {
-		Location newPos = p.clone();
+	public boolean execute(Location l, String winCondition) {
+		Location newPos = l.clone();
 		String compareCond = "";
 		for (int i = 0; i < board.getColumn(); i++) {
 			newPos.setCol(i);

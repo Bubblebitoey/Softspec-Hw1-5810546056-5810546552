@@ -11,7 +11,7 @@ package com.board.shape;
  * Important: The Default Row and Column, you can find in {@link #DEFAULT_ROW row} and {@link #DEFAULT_COLUMN column}.
  *
  * @author kamontat
- * @version 1.0
+ * @version 1.1
  * @since Fri 24/Feb/2017 - 11:56 PM
  */
 public abstract class Shape {

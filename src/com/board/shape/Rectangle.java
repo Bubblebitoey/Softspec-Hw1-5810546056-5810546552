@@ -5,7 +5,7 @@ package com.board.shape;
  * To use this class, you must use by call {@link #getSize(int, int)} or {@link #getDefaultSize()}.
  *
  * @author kamontat
- * @version 1.0
+ * @version 1.1
  * @since Fri 24/Feb/2017 - 11:57 PM
  */
 public class Rectangle extends Shape {

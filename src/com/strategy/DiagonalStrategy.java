@@ -9,7 +9,7 @@ import com.player.Symbol;
  * This class contain 2 sub checker which is <b>left diagonal</b> and <b>right diagonal</b>.
  *
  * @author kamontat
- * @version 1.0
+ * @version 2.1.1
  * @since 2/24/2017 AD - 9:59 PM
  */
 public class DiagonalStrategy extends WinStrategy {

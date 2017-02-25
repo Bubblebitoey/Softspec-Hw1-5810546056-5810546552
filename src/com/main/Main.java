@@ -8,7 +8,11 @@ import com.player.Player;
 import com.player.Symbol;
 
 /**
- * Created by bubblebitoey on 2/23/2017 AD.
+ * Main class
+ *
+ * @author bubblebitoey
+ * @version 3.0
+ * @since 2/23/2017 AD.
  */
 public class Main {
 	

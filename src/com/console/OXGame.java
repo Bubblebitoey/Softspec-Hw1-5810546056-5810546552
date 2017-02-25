@@ -18,6 +18,7 @@ import java.util.*;
  * To run the game just call method {@link #run()}
  *
  * @author bubblebitoey
+ * @version 3.0
  * @since 2/23/2017 AD.
  */
 public class OXGame implements Runnable {

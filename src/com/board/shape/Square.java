@@ -5,6 +5,7 @@ package com.board.shape;
  * To use this class you must use the method call {@link #getSize(int)} or {@link #getDefaultSize()}.
  *
  * @author bubblebitoey
+ * @version 1.1
  * @since 2/23/2017 AD.
  */
 public class Square extends Shape {

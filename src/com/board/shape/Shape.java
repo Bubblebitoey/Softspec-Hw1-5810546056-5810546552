@@ -37,7 +37,7 @@ public abstract class Shape {
 	/**
 	 * create shape with default size ({@link #DEFAULT_ROW row}, {@link #DEFAULT_COLUMN column}).
 	 */
-	protected Shape() {
+	Shape() {
 		this.row = DEFAULT_ROW;
 		this.column = DEFAULT_COLUMN;
 	}

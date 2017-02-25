@@ -3,8 +3,8 @@ package test;
 import com.board.Board;
 import com.board.shape.Square;
 import com.console.OXGame;
+import com.player.Location;
 import com.player.Player;
-import com.player.Position;
 import com.player.Symbol;
 import org.junit.Assert;
 import org.junit.Before;
@@ -49,8 +49,8 @@ public class Game9x9Tester {
 			Assert.fail("Game Must End when read file done");
 		}
 		
-		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(1, 9)));
-		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(1, 1)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(1, 9)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(1, 1)));
 		
 		Assert.assertTrue(b.winner.equals(p2));
 	}
@@ -66,7 +66,7 @@ public class Game9x9Tester {
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
-		Symbol getSymbol = b.getSymbol(new Position(1, 2));
+		Symbol getSymbol = b.getSymbol(new Location(1, 2));
 		
 		Assert.assertEquals(p2.getSymbol(), getSymbol);
 		Assert.assertFalse(b.isBoardFull());
@@ -102,10 +102,10 @@ public class Game9x9Tester {
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
-		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Position(7, 7)));
-		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Position(6, 9)));
+		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Location(7, 7)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(6, 9)));
 		
-		Assert.assertTrue(b.isEmpty(new Position(5, 6)));
+		Assert.assertTrue(b.isEmpty(new Location(5, 6)));
 		Assert.assertFalse(b.isBoardFull());
 		
 		Assert.assertTrue(b.winner.equals(p1));

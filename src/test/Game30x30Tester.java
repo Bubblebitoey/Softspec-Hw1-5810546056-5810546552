@@ -7,6 +7,7 @@ import com.console.OXGame;
 import com.player.Location;
 import com.player.Player;
 import com.player.Symbol;
+import com.strategy.DiagonalStrategy;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +24,7 @@ import java.util.*;
 public class Game30x30Tester {
 	private final String folder = "testfile/_30x30/";
 	private final Shape s = Square.getSize(30);
+	private final int winCond = 10;
 	
 	private Board b;
 	
@@ -35,7 +37,7 @@ public class Game30x30Tester {
 	
 	@Before
 	public void setBoard() {
-		b = new Board(s, 10);
+		b = new Board(s, winCond);
 	}
 	
 	@Test
@@ -57,5 +59,69 @@ public class Game30x30Tester {
 		Assert.assertFalse(b.isBoardFull());
 		
 		Assert.assertTrue(b.winner.equals(p1));
+	}
+	
+	@Test
+	public void rowTester() throws IOException {
+		final String testingFile = "row.txt";
+		InputStream s = reader(testingFile);
+		
+		OXGame g = new OXGame(s, b, p1, p2);
+		try {
+			g.run();
+		} catch (NoSuchElementException e) {
+			Assert.fail("Game Must End when read file done");
+		}
+		
+		String old = b.toString();
+		
+		Assert.assertTrue(b.insert(p1, new Location(28, 1)));
+		Assert.assertTrue(b.insert(p1, new Location(24, 13)));
+		
+		Assert.assertFalse(b.insert(p2, new Location(30, 30)));
+		Assert.assertFalse(b.insert(p2, new Location(10, 10)));
+		
+		Assert.assertNotEquals(old, b.toString());
+		
+		Assert.assertFalse(b.isBoardFull());
+		
+		Assert.assertTrue(b.winner.equals(p1));
+	}
+	
+	@Test
+	public void dLTester() throws IOException {
+		final String testingFile = "dia_l.txt";
+		InputStream s = reader(testingFile);
+		
+		OXGame g = new OXGame(s, b, p1, p2);
+		try {
+			g.run();
+		} catch (NoSuchElementException e) {
+			Assert.fail("Game Must End when read file done");
+		}
+		
+		Assert.assertEquals(Symbol.WIN, b.getSymbol(new Location(17, 22)));
+		Assert.assertFalse(b.isBoardFull());
+		Assert.assertTrue(b.winner.equals(p2));
+	}
+	
+	@Test
+	public void dRTester() throws IOException {
+		final String testingFile = "dia_r.txt";
+		InputStream s = reader(testingFile);
+		
+		OXGame g = new OXGame(s, b, p1, p2);
+		try {
+			g.run();
+		} catch (NoSuchElementException e) {
+			Assert.fail("Game Must End when read file done");
+		}
+		
+		String win = "";
+		for (int i = 0; i < winCond; i++) {
+			win += p2.getSymbol();
+		}
+		
+		Assert.assertTrue(new DiagonalStrategy(b).execute(new Location(11, 15), win));
 	}
 }

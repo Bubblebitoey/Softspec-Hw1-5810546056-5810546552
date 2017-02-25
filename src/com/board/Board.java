@@ -2,12 +2,17 @@ package com.board;
 
 import com.board.shape.Shape;
 import com.history.BoardHistory;
-import com.player.Player;
 import com.player.Location;
+import com.player.Player;
 import com.player.Symbol;
 import com.strategy.ColumnStrategy;
 import com.strategy.DiagonalStrategy;
 import com.strategy.RowStrategy;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 
 import static com.board.Board.State.ERROR;
 import static com.board.Board.State.PLAYING;
@@ -224,6 +229,25 @@ public class Board {
 	 */
 	public void printHistory() {
 		System.out.println(history.toString());
+	}
+	
+	/**
+	 * save to history to the file
+	 *
+	 * @param file
+	 * 		saving history file
+	 * @return true, if save successfully; otherwise false
+	 */
+	public boolean saveHistory(File file) {
+		try {
+			PrintWriter printer = new PrintWriter(new FileOutputStream(file));
+			printer.print(history.toString());
+			printer.close();
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	@Override

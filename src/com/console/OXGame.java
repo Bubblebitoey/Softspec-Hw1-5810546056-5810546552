@@ -87,6 +87,9 @@ public class OXGame implements Runnable {
 		} catch (InputMismatchException e) {
 			input.nextLine();
 			return null;
+		} catch (NoSuchElementException e) {
+			board.fail();
+			throw e;
 		}
 	}
 	

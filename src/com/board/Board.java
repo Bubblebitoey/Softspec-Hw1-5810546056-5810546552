@@ -9,6 +9,7 @@ import com.strategy.ColumnStrategy;
 import com.strategy.DiagonalStrategy;
 import com.strategy.RowStrategy;
 
+import static com.board.Board.State.ERROR;
 import static com.board.Board.State.PLAYING;
 
 /**
@@ -30,9 +31,15 @@ public class Board {
 	
 	/**
 	 * The board state.
+	 * <ul>
+	 * <li>{@link State#PLAYING} - this board is playing</li>
+	 * <li>{@link State#WIN} - this board have the winner already</li>
+	 * <li>{@link State#DRAW} - this board end with draw condition (meaning no winner)</li>
+	 * <li>{@link State#ERROR} - this board end with error exception</li>
+	 * </ul>
 	 */
 	public enum State {
-		PLAYING, WIN, DRAW;
+		PLAYING, WIN, DRAW, ERROR;
 	}
 	
 	/**
@@ -98,6 +105,7 @@ public class Board {
 	 * @return true, if insert complete; otherwise, return false.
 	 */
 	public boolean insert(Player player, Location p) {
+		if (state == ERROR) return false;
 		if (p == null) {
 			System.err.println("Invalid position.");
 			return false;
@@ -235,5 +243,13 @@ public class Board {
 			output += "\n";
 		}
 		return output;
+	}
+	
+	/**
+	 * Warning: use this method only when have error occurred that game cannot continues play.
+	 */
+	public void fail() {
+		state = ERROR;
+		// System.exit(1);
 	}
 }

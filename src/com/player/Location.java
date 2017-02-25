@@ -66,6 +66,15 @@ public class Location {
 		if (this.col < 0) this.col = 0;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (obj.getClass() != this.getClass()) return false;
+		Location l = (Location) obj;
+		return row == l.row && col == l.col;
+	}
+	
+	
 	/**
 	 * get string of the position that start from (1, 1)
 	 *

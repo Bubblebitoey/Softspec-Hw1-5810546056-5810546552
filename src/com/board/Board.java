@@ -78,7 +78,7 @@ public class Board {
 		this.row = s.getRow();
 		this.column = s.getColumn();
 		board = new Symbol[row][column];
-		this.inRow = winCondition;
+		this.inRow = winCondition > row ? winCondition > column ? Math.max(row, column): winCondition: winCondition;
 		
 		// init board
 		for (int i = 0; i < row; i++) {
@@ -115,6 +115,7 @@ public class Board {
 		
 		// change board state.
 		if (checkWin(player, p)) {
+			board[p.row][p.col] = Symbol.WIN;
 			state = State.WIN;
 			winner = player;
 		} else if (isBoardFull()) {
@@ -142,6 +143,16 @@ public class Board {
 	
 	public int getColumn() {
 		return column;
+	}
+	
+	/**
+	 * get the board history.
+	 *
+	 * @return the history of current board.
+	 * @see BoardHistory
+	 */
+	public BoardHistory getHistory() {
+		return history;
 	}
 	
 	/**
@@ -174,6 +185,7 @@ public class Board {
 		for (int i = 0; i < inRow; i++) {
 			winCondition += player.getSymbol();
 		}
+		
 		return new RowStrategy(this).execute(p, winCondition) || new ColumnStrategy(this).execute(p, winCondition) || new DiagonalStrategy(this).execute(p, winCondition);
 	}
 	
@@ -199,22 +211,26 @@ public class Board {
 		return isValid(p) && board[p.row][p.col] == Symbol.EMPTY;
 	}
 	
+	/**
+	 * print the history out.
+	 */
 	public void printHistory() {
 		System.out.println(history.toString());
 	}
 	
 	@Override
 	public String toString() {
-		String output = "0";
+		String output = " 0 ";
 		for (int i = 1; i <= column; i++) {
-			output += " " + i;
+			output += String.format("%2d%1s", i, "");
 		}
 		output += "\n";
 		int i = 0;
 		for (Symbol[] symbols : board) {
-			output += ((++i) + " ");
+			output += String.format("%2d%1s", (++i), "");
 			for (Symbol symbol : symbols) {
-				output += (symbol + " ");
+				if (symbol != Symbol.WIN) output += String.format("%2s%1s", symbol, "");
+				else output += String.format("%-3s", symbol);
 			}
 			output += "\n";
 		}

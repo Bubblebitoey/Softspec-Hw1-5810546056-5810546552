@@ -10,7 +10,7 @@ public enum Symbol {
 	/**
 	 * this is the <b>empty</b> symbol which stand of nothing inside the location
 	 */
-	EMPTY, X, O;
+	EMPTY, WIN, X, O;
 	
 	/**
 	 * if the symbol is {@link #EMPTY} this method will return "-"; otherwise, return the string of variable (like <code>O</code> or <code>X</code>)
@@ -19,6 +19,7 @@ public enum Symbol {
 	 */
 	public String toString() {
 		if (this == EMPTY) return "-";
+		else if (this == WIN) return "[ ]";
 		return name();
 	}
 }

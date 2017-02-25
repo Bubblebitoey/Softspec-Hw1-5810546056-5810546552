@@ -42,7 +42,7 @@ public class Location {
 	 */
 	public void setRow(int row) {
 		this.row = row;
-		// nonNegative();
+		nonNegative();
 	}
 	
 	/**
@@ -54,13 +54,12 @@ public class Location {
 	 */
 	public void setCol(int col) {
 		this.col = col;
-		// nonNegative();
+		nonNegative();
 	}
 	
 	/**
-	 * row and col variable must be positive number ( > 0).
+	 * row and col variable must be positive number (less than 0).
 	 */
-	@Deprecated
 	private void nonNegative() {
 		if (this.row < 0) this.row = 0;
 		if (this.col < 0) this.col = 0;

@@ -90,10 +90,11 @@ public class Game5x5Tester {
 		}
 		
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(1, 5)));
-		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(2, 4)));
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(3, 3)));
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(4, 2)));
 		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(5, 1)));
+		
+		Assert.assertEquals(Symbol.WIN, b.getSymbol(new Location(2, 4)));
 		
 		Assert.assertEquals(Board.State.WIN, b.state);
 		Assert.assertTrue(b.winner.equals(p2));

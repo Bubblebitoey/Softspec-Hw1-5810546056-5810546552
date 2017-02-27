@@ -29,7 +29,7 @@ public class Main {
 		Player p1 = new Player("p1", Symbol.O);
 		Player p2 = new Player("p2", Symbol.X);
 		
-		// For testing only
+		// For testing only: Generating random input to the game
 		// InputStream stream = Randoms.getRandomInputStream(1750, s.getRow());
 		// OXGame game = new OXGame(stream, b, p1, p2);
 		
@@ -41,6 +41,5 @@ public class Main {
 		// PrintWriter printer = new PrintWriter(new FileOutputStream(file));
 		// printer.print(b.getHistory().toString());
 		// printer.close();
-		
 	}
 }

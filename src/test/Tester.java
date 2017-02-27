@@ -12,12 +12,16 @@ import org.junit.runners.Suite;
  * @since Sat 25/Feb/2017 - 6:00 PM
  */
 public class Tester {
+	/**
+	 * run time: 6 ~ 7 second
+	 */
 	@RunWith(Suite.class)
-	@Suite.SuiteClasses({Game9x9Tester.class, Game5x5Tester.class})
+	@Suite.SuiteClasses({Game30x30Tester.class, Game9x9Tester.class, Game5x5Tester.class})
 	public class AllTests {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println();
 		Result result = JUnitCore.runClasses(AllTests.class);
 		for (Failure failure : result.getFailures()) {
 			System.err.println(failure.toString());

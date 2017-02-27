@@ -9,5 +9,5 @@ The **main** class is in path: [`$root/src/com/main/Main.java`](https://github.c
 The **main test** class is in path: [`$root/src/test/Tester.java`](https://github.com/Bubblebitoey/Softspec-Hw1-5810546056-5810546552/blob/master/src/test/Tester.java)
 
 # License
-This repository license is MIT.  
-We created for `Software Specification & Design Lab` homework in Kasetsart University.
+This repository license is [MIT](https://github.com/Bubblebitoey/Softspec-Hw1-5810546056-5810546552/blob/master/LICENSE).
+We created for `Software Specification & Design Lab` homework in `Kasetsart University`.

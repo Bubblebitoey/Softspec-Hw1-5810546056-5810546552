@@ -7,6 +7,8 @@ import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
 
 /**
+ * Main of the unit test, you can run this class to run all of unit-test that available
+ *
  * @author kamontat
  * @version 1.0
  * @since Sat 25/Feb/2017 - 6:00 PM
@@ -18,8 +20,20 @@ public class Tester {
 	@RunWith(Suite.class)
 	@Suite.SuiteClasses({Game30x30Tester.class, Game9x9Tester.class, Game5x5Tester.class})
 	public class AllTests {
+		
 	}
 	
+	/**
+	 * run all test case:
+	 * <ul>
+	 * <li>{@link Game5x5Tester} - test board size: 5x5.</li>
+	 * <li>{@link Game9x9Tester} - test board size: 9x9.</li>
+	 * <li>{@link Game30x30Tester} - test board size: 30x30.</li>
+	 * </ul>
+	 *
+	 * @param args
+	 * 		no used
+	 */
 	public static void main(String[] args) {
 		System.out.println();
 		Result result = JUnitCore.runClasses(AllTests.class);

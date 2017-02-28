@@ -86,7 +86,7 @@ public class Location {
 	}
 	
 	/**
-	 * clone new position, use in case of if you want to modify the position without effect current position
+	 * clone new position, use in case of if you want to modify the position without effect with current position
 	 *
 	 * @return new position that same value but different variable
 	 */

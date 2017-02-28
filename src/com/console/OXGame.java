@@ -11,8 +11,8 @@ import java.util.*;
  * This class will play the Tic-Tac-Toe game, <br>
  * There are 2 way to play the game:
  * <ol>
- * <li>You can player by using {@link OXGame#OXGame(Board, Player...)} - this will allow you to play the game in console.</li>
- * <li>Another way is {@link OXGame#OXGame(InputStream, Board, Player...)} - this will allow you to play the game with any input stream that you wanted.</li>
+ * <li>You can play by using {@link OXGame#OXGame(Board, Player...)} - this will allow you to play the game in console.</li>
+ * <li>Another way is {@link OXGame#OXGame(InputStream, Board, Player...)} - this will allow you to play the game with any input stream that you want.</li>
  * </ol>
  * <p>
  * To run the game just call method {@link #run()}
@@ -42,11 +42,11 @@ public class OXGame implements Runnable {
 	private Player[] players;
 	
 	/**
-	 * use default input stream to player the game that allow you to playing the game in console like <code>terminal</code> or <code>compiler</code> <br>
+	 * use default input stream to play the game that allow you to play the game in console such as <code>terminal</code> or <code>compiler</code> <br>
 	 * To setting the game you must have <b>The board</b> and <b>The player</b>.
 	 *
 	 * @param board
-	 * 		This is the game board.
+	 * 		This is the game's board.
 	 * @param players
 	 * 		This is the players.
 	 */

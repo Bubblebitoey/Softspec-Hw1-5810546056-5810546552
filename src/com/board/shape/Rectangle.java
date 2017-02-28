@@ -1,7 +1,7 @@
 package com.board.shape;
 
 /**
- * The Board Size with rectangle shape (row and column are <b>NOT</b> necessary to equals). <br>
+ * The Board Size with rectangle shape (row and column are <b>NOT</b> necessary to equal). <br>
  * To use this class, you must use by call {@link #getSize(int, int)} or {@link #getDefaultSize()}.
  *
  * @author kamontat
@@ -23,7 +23,7 @@ public class Rectangle extends Shape {
 	
 	/**
 	 * The private constructor that call {@link Shape#Shape()} constructor. <br>
-	 * this will create will create with {@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
+	 * this will create with {@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
 	 */
 	private Rectangle() {
 		super();

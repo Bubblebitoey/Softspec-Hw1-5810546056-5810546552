@@ -4,11 +4,11 @@ package com.board.shape;
  * This class is for creating board size. <br>
  * Here We implement 2 sub class that you can use to create the board. <br>
  * <ol>
- * <li>{@link Square} - This class will create the square which is both row and column are equals.</li>
- * <li>{@link Rectangle} - This class will create the rectangle size which is row and column not necessary to be equals.</li>
+ * <li>{@link Square} - This class will create the square which is both row and column are equal.</li>
+ * <li>{@link Rectangle} - This class will create the rectangle size which is row and column not necessary to be equal.</li>
  * </ol>
  * <p>
- * Important: The Default Row and Column, you can find in {@link #DEFAULT_ROW row} and {@link #DEFAULT_COLUMN column}.
+ * Important: The Default of Row and Column, you can find in {@link #DEFAULT_ROW row} and {@link #DEFAULT_COLUMN column}.
  *
  * @author kamontat
  * @version 1.1

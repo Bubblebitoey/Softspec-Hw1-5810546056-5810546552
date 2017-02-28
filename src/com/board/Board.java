@@ -31,7 +31,7 @@ import static com.board.Board.State.PLAYING;
  */
 public class Board {
 	/**
-	 * default connected character that make player win.
+	 * default the player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal row wins the game.
 	 */
 	private static final int DEFAULT_WIN_CONDITION = 5;
 	
@@ -42,14 +42,14 @@ public class Board {
 	 * <li>{@link State#WIN} - this board have the winner already</li>
 	 * <li>{@link State#DRAW} - this board end with draw condition (meaning no winner)</li>
 	 * <li>{@link State#ERROR} - this board end with error exception</li>
-	 * </ul>
+	 * </ul>s
 	 */
 	public enum State {
 		PLAYING, WIN, DRAW, ERROR;
 	}
 	
 	/**
-	 * the win condition that player must place Symbol connected.
+	 * the win condition player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal row wins the game.
 	 */
 	private int inRow;
 	
@@ -85,7 +85,7 @@ public class Board {
 	 * @param s
 	 * 		The board shape or the board size.
 	 * @param winCondition
-	 * 		the win condition (how long that symbol must connected).
+	 * 		the win condition (how many consecutive characters in a horizontal, vertical, or diagonal row).
 	 */
 	public Board(Shape s, int winCondition) {
 		this.row = s.getRow();
@@ -184,11 +184,11 @@ public class Board {
 	}
 	
 	/**
-	 * To check that current playing player win or not. <br>
+	 * To check that current player win or not. <br>
 	 * This method using Strategy patterns which in the strategy package ({@link com.strategy.WinStrategy}, etc.).
 	 *
 	 * @param player
-	 * 		current playing game player.
+	 * 		current game player.
 	 * @param p
 	 * 		the position that player playing.
 	 * @return true if this player already win.

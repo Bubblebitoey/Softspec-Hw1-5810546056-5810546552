@@ -26,7 +26,7 @@ public class ColumnStrategy extends WinStrategy {
 	 * Check the column.
 	 *
 	 * @param l
-	 * 		the position that user insert their symbol.
+	 * 		the position that user insert their character.
 	 * @param winCondition
 	 * 		the win condition.
 	 * @return true if win with column win condition; otherwise, false.

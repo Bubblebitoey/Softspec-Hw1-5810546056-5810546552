@@ -14,7 +14,7 @@ import com.player.Symbol;
  */
 public class DiagonalStrategy extends WinStrategy {
 	/**
-	 * The checking direction (Must using in side this(DiagonalStrategy) class <b>ONLY</b>)
+	 * Checking direction (Must using in side this(DiagonalStrategy) class <b>ONLY</b>)
 	 */
 	private enum Direction {
 		LEFT, RIGHT;
@@ -69,7 +69,7 @@ public class DiagonalStrategy extends WinStrategy {
 	 * check is win with direction (left or right).
 	 *
 	 * @param l
-	 * 		the position that user insert their symbol.
+	 * 		the position that user insert their character.
 	 * @param winCond
 	 * 		the win condition.
 	 * @param d
@@ -107,7 +107,7 @@ public class DiagonalStrategy extends WinStrategy {
 	 * Check the diagonal both left and right.
 	 *
 	 * @param location
-	 * 		the position that user insert their symbol.
+	 * 		the position that user insert their character.
 	 * @param winCondition
 	 * 		the win condition.
 	 * @return true if win with diagonal win condition; otherwise, false.

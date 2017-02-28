@@ -1,7 +1,7 @@
 package com.board.shape;
 
 /**
- * The Board Size with square shape (Both row and column are equals). <br>
+ * The Board Size with square shape (Both row and column are equal). <br>
  * To use this class you must use the method call {@link #getSize(int)} or {@link #getDefaultSize()}.
  *
  * @author bubblebitoey
@@ -21,7 +21,7 @@ public class Square extends Shape {
 	
 	/**
 	 * The private constructor that call {@link Shape#Shape()} constructor. <br>
-	 * this will create will create with {@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
+	 * this will create with{@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
 	 */
 	private Square() {
 		super();

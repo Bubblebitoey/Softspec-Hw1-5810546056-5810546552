@@ -1,7 +1,7 @@
 package com.player;
 
 /**
- * The enum that represent the symbol of the player.
+ * The enum that represent the symbol of each player.
  *
  * @author bubblebitoey
  * @version 1.1
@@ -9,7 +9,7 @@ package com.player;
  */
 public enum Symbol {
 	/**
-	 * this is the <b>empty</b> symbol which stand of nothing inside the location
+	 * this is the <b>empty</b> symbol which nothing inside the location
 	 */
 	EMPTY, WIN, X, O;
 	

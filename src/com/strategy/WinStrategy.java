@@ -17,7 +17,7 @@ public abstract class WinStrategy {
 	 * constructor that initial with board game
 	 *
 	 * @param board
-	 * 		the game board
+	 * 		the game's board
 	 */
 	WinStrategy(Board board) {
 		this.board = board;
@@ -27,10 +27,10 @@ public abstract class WinStrategy {
 	 * Check winner by parameters
 	 *
 	 * @param l
-	 * 		position that player insert their symbol
+	 * 		position that player insert their character
 	 * @param winCondition
 	 * 		the win condition that make player became winner if match this parameter
-	 * @return return true, if player who insert the symbol became winner; otherwise return false
+	 * @return return true, if player who insert the character became winner; otherwise return false
 	 */
 	public abstract boolean execute(Location l, String winCondition);
 }

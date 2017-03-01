@@ -42,7 +42,7 @@ public class Board {
 	 * <li>{@link State#WIN} - this board have the winner already</li>
 	 * <li>{@link State#DRAW} - this board end with draw condition (meaning no winner)</li>
 	 * <li>{@link State#ERROR} - this board end with error exception</li>
-	 * </ul>s
+	 * </ul>
 	 */
 	public enum State {
 		PLAYING, WIN, DRAW, ERROR;

@@ -19,7 +19,7 @@ import java.util.*;
 
 /**
  * @author kamontat
- * @version 1.0
+ * @version 1.1
  * @since Fri 24/Feb/2017 - 11:39 PM
  */
 public class Game30x30Tester {

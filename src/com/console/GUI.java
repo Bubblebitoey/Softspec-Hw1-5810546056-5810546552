@@ -11,7 +11,9 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 
 /**
- * Created by bubblebitoey on 3/2/2017 AD.
+ * @author bubblebitoey
+ * @version 1.2
+ * @since 3/2/2017 AD.
  */
 public class GUI extends JFrame implements Runnable {
 	private static final Dimension DEFAULT_SIZE = new Dimension(350, 350);
@@ -63,13 +65,27 @@ public class GUI extends JFrame implements Runnable {
 		
 		table.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				int row = table.rowAtPoint(e.getPoint());
 				int col = table.columnAtPoint(e.getPoint());
 				play(table, new Location(row + 1, col + 1));
 			}
 		});
 		pane.add(table);
+	}
+	
+	/**
+	 * remove all data in table
+	 *
+	 * @param table
+	 * 		the removed data table
+	 */
+	private void removeAll(final JTable table) {
+		for (int i = 0; i < table.getRowCount(); i++) {
+			for (int j = 0; j < table.getColumnCount(); j++) {
+				table.setValueAt("", i, j);
+			}
+		}
 	}
 	
 	private void play(JTable table, Location l) {
@@ -81,14 +97,22 @@ public class GUI extends JFrame implements Runnable {
 			}
 		}
 		
+		String message = "";
+		
 		if (game.getGameState() == GameBoard.State.DRAW) {
-			System.out.println("draw");
+			message = "Draw!";
 		} else if (game.getGameState() == GameBoard.State.WIN) {
-			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", game.getWinner() + " winner.", JOptionPane.YES_NO_OPTION);
+			message = game.getWinner() + " winner.";
+		}
+		
+		if (game.getGameState() != GameBoard.State.PLAYING) {
+			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", message, JOptionPane.YES_NO_OPTION);
 			if (result == JOptionPane.YES_OPTION) {
-				System.out.println("play again.");
+				game.restart();
+				removeAll(table);
 			} else {
-				System.out.println("done.");
+				// TODO 3/3/2017 AD 12:27 AM game over
+				game.end();
 			}
 		}
 	}

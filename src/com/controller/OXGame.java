@@ -52,11 +52,14 @@ public class OXGame implements GameBoard {
 		this.board = board;
 		this.players = players;
 		
+		winner = -1;
+		currentPlayer = 1;
 		state = State.PLAYING;
 	}
 	
 	@Override
 	public boolean insert(Location location) {
+		if (state == State.ERROR || state == State.END) return false;
 		if (board.insert(currentPlayer(), location)) {
 			// change game state.
 			if (checkWin(currentPlayer(), location)) {
@@ -91,6 +94,15 @@ public class OXGame implements GameBoard {
 		return new RowStrategy(board).execute(p, winCondition) || new ColumnStrategy(board).execute(p, winCondition) || new DiagonalStrategy(board).execute(p, winCondition);
 	}
 	
+	@Override
+	public void restart() {
+		board.resetBoard();
+		
+		winner = -1;
+		currentPlayer = 1;
+		state = State.PLAYING;
+	}
+	
 	/**
 	 * Warning: use this method only when have error occurred that game cannot continues play.
 	 */
@@ -98,6 +110,11 @@ public class OXGame implements GameBoard {
 	public void fail() {
 		state = State.ERROR;
 		// System.exit(1);
+	}
+	
+	@Override
+	public void end() {
+		state = State.END;
 	}
 	
 	@Override
@@ -141,11 +158,4 @@ public class OXGame implements GameBoard {
 		System.out.println(board.toString());
 	}
 	
-	public int row() {
-		return getSize().getRow();
-	}
-	
-	public int column() {
-		return getSize().getColumn();
-	}
 }

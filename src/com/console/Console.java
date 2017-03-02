@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * @author bubblebitoey
- * @version 1.0
+ * @version 1.1
  * @since 3/2/2017 AD.
  */
 public class Console implements Runnable {

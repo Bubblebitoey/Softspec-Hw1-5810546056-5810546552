@@ -62,6 +62,10 @@ public class Board {
 		board = new Symbol[size.getRow()][size.getColumn()];
 		this.consecutive = winCondition > size.getRow() ? winCondition > size.getColumn() ? Math.max(size.getRow(), size.getColumn()): winCondition: winCondition;
 		
+		resetBoard();
+	}
+	
+	public void resetBoard() {
 		// init board
 		for (int i = 0; i < size.getRow(); i++) {
 			for (int j = 0; j < size.getColumn(); j++) {

@@ -3,6 +3,7 @@ package com.main;
 import com.board.Board;
 import com.board.shape.Square;
 import com.console.GUI;
+import com.controller.GameBoard;
 import com.controller.OXGame;
 import com.player.Player;
 import com.player.Symbol;
@@ -28,12 +29,14 @@ public class Main {
 		Player p1 = new Player("p1", Symbol.O);
 		Player p2 = new Player("p2", Symbol.X);
 		
-		OXGame game = new OXGame(b, p1, p2);
+		GameBoard game = new OXGame(b, p1, p2);
 		
 		// console version
 		// Runnable runnable = new Console(Console.DEFAULT_INPUT_STREAM, game);
+		
 		// gui version
 		Runnable runnable = new GUI(game);
+		
 		
 		runnable.run();
 		

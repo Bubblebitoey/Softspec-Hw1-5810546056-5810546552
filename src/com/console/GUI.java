@@ -37,6 +37,20 @@ public class GUI extends JFrame implements Runnable {
 	}
 	
 	private void createUIComponents() {
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+		
+		JPanel north = new JPanel();
+		north.setLayout(new BoxLayout(north, BoxLayout.LINE_AXIS));
+		// north.add(Box.createHorizontalGlue()); // glue to right
+		north.add(new JLabel("Status: "));
+		// north.add(Box.createRigidArea(new Dimension(40, 0))); // set gap
+		north.add(new JLabel("Something"));
+		
+		pane.add(north);
+		pane.add(tableSetting());
+	}
+	
+	private JTable tableSetting() {
 		JTable table = new JTable(game.getSize().getRow(), game.getSize().getColumn()) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -71,7 +85,7 @@ public class GUI extends JFrame implements Runnable {
 				play(table, new Location(row + 1, col + 1));
 			}
 		});
-		pane.add(table);
+		return table;
 	}
 	
 	/**
@@ -111,7 +125,6 @@ public class GUI extends JFrame implements Runnable {
 				game.restart();
 				removeAll(table);
 			} else {
-				// TODO 3/3/2017 AD 12:27 AM game over
 				game.end();
 			}
 		}

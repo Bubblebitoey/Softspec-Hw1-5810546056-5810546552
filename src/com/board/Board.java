@@ -5,17 +5,11 @@ import com.history.BoardHistory;
 import com.player.Location;
 import com.player.Player;
 import com.player.Symbol;
-import com.strategy.ColumnStrategy;
-import com.strategy.DiagonalStrategy;
-import com.strategy.RowStrategy;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-
-import static com.board.Board.State.ERROR;
-import static com.board.Board.State.PLAYING;
 
 /**
  * The board of the game that created by {@link com.board.shape.Shape Shape} class. <br>
@@ -31,42 +25,18 @@ import static com.board.Board.State.PLAYING;
  */
 public class Board {
 	/**
-	 * default the player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal row wins the game.
+	 * default the player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getRow() wins the game.
 	 */
 	private static final int DEFAULT_WIN_CONDITION = 5;
 	
 	/**
-	 * The board state.
-	 * <ul>
-	 * <li>{@link State#PLAYING} - this board is playing</li>
-	 * <li>{@link State#WIN} - this board have the winner already</li>
-	 * <li>{@link State#DRAW} - this board end with draw condition (meaning no winner)</li>
-	 * <li>{@link State#ERROR} - this board end with error exception</li>
-	 * </ul>
+	 * the win condition player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getRow() wins the game.
 	 */
-	public enum State {
-		PLAYING, WIN, DRAW, ERROR;
-	}
-	
-	/**
-	 * the win condition player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal row wins the game.
-	 */
-	private int inRow;
+	private int consecutive;
 	
 	private BoardHistory history = BoardHistory.getInstance();
 	private Symbol[][] board;
-	private int row;
-	private int column;
-	
-	/**
-	 * current state.
-	 */
-	public State state = PLAYING;
-	
-	/**
-	 * the winner, if no winner this variable will be <code>null</code>.
-	 */
-	public Player winner;
+	private Shape size;
 	
 	/**
 	 * Create the board with the {@link Shape}. <br>
@@ -85,17 +55,16 @@ public class Board {
 	 * @param s
 	 * 		The board shape or the board size.
 	 * @param winCondition
-	 * 		the win condition (how many consecutive characters in a horizontal, vertical, or diagonal row).
+	 * 		the win condition (how many consecutive characters in a horizontal, vertical, or diagonal size.getRow()).
 	 */
 	public Board(Shape s, int winCondition) {
-		this.row = s.getRow();
-		this.column = s.getColumn();
-		board = new Symbol[row][column];
-		this.inRow = winCondition > row ? winCondition > column ? Math.max(row, column): winCondition: winCondition;
+		size = s;
+		board = new Symbol[size.getRow()][size.getColumn()];
+		this.consecutive = winCondition > size.getRow() ? winCondition > size.getColumn() ? Math.max(size.getRow(), size.getColumn()): winCondition: winCondition;
 		
 		// init board
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < column; j++) {
+		for (int i = 0; i < size.getRow(); i++) {
+			for (int j = 0; j < size.getColumn(); j++) {
 				board[i][j] = Symbol.EMPTY;
 			}
 		}
@@ -111,11 +80,8 @@ public class Board {
 	 * @return true, if insert complete; otherwise, return false.
 	 */
 	public boolean insert(Player player, Location p) {
-		if (state == ERROR) return false;
-		if (p == null) {
-			System.err.println("Invalid position.");
-			return false;
-		}
+		if (player == null || p == null) return false;
+		
 		if (!isValid(p)) {
 			System.err.println(p + " is out of board size.");
 			return false;
@@ -126,15 +92,6 @@ public class Board {
 		}
 		
 		board[p.row][p.col] = player.getSymbol();
-		
-		// change board state.
-		if (checkWin(player, p)) {
-			board[p.row][p.col] = Symbol.WIN;
-			state = State.WIN;
-			winner = player;
-		} else if (isBoardFull()) {
-			state = State.DRAW;
-		}
 		
 		history.addNewHistory(this, player, p);
 		return true;
@@ -151,12 +108,24 @@ public class Board {
 		return board[position.row][position.col];
 	}
 	
-	public int getRow() {
-		return row;
+	/**
+	 * set new symbol in to the board at {@link Location location}.
+	 *
+	 * @param location
+	 * 		the location
+	 * @param symbol
+	 * 		new symbol
+	 */
+	public void setSymbol(Location location, Symbol symbol) {
+		board[location.row][location.col] = symbol;
 	}
 	
-	public int getColumn() {
-		return column;
+	public Shape getSize() {
+		return size;
+	}
+	
+	public int getConsecutive() {
+		return consecutive;
 	}
 	
 	/**
@@ -174,33 +143,13 @@ public class Board {
 	 *
 	 * @return true, if board already fulled; otherwise return false.
 	 */
-	public boolean isBoardFull() {
+	public boolean isFull() {
 		for (Symbol[] symbols : board) {
 			for (Symbol symbol : symbols) {
 				if (symbol == Symbol.EMPTY) return false;
 			}
 		}
 		return true;
-	}
-	
-	/**
-	 * To check that current player win or not. <br>
-	 * This method using Strategy patterns which in the strategy package ({@link com.strategy.WinStrategy}, etc.).
-	 *
-	 * @param player
-	 * 		current game player.
-	 * @param p
-	 * 		the position that player playing.
-	 * @return true if this player already win.
-	 */
-	private boolean checkWin(Player player, Location p) {
-		String compare = "";
-		String winCondition = "";
-		for (int i = 0; i < inRow; i++) {
-			winCondition += player.getSymbol();
-		}
-		
-		return new RowStrategy(this).execute(p, winCondition) || new ColumnStrategy(this).execute(p, winCondition) || new DiagonalStrategy(this).execute(p, winCondition);
 	}
 	
 	/**
@@ -211,7 +160,7 @@ public class Board {
 	 * @return true if in board size; otherwise, return false.
 	 */
 	public boolean isValid(Location p) {
-		return p != null && p.row >= 0 && p.row < row && p.col >= 0 && p.col < column;
+		return p != null && p.row >= 0 && p.row < size.getRow() && p.col >= 0 && p.col < size.getColumn();
 	}
 	
 	/**
@@ -254,7 +203,7 @@ public class Board {
 	@Override
 	public String toString() {
 		String output = " 0 ";
-		for (int i = 1; i <= column; i++) {
+		for (int i = 1; i <= size.getColumn(); i++) {
 			output += String.format("%2d%1s", i, "");
 		}
 		output += "\n";
@@ -268,13 +217,5 @@ public class Board {
 			output += "\n";
 		}
 		return output;
-	}
-	
-	/**
-	 * Warning: use this method only when have error occurred that game cannot continues play.
-	 */
-	public void fail() {
-		state = ERROR;
-		// System.exit(1);
 	}
 }

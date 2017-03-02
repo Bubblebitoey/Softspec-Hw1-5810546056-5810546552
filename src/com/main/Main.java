@@ -1,9 +1,7 @@
 package com.main;
 
 import com.board.Board;
-import com.board.shape.Shape;
 import com.board.shape.Square;
-import com.console.Console;
 import com.console.GUI;
 import com.controller.OXGame;
 import com.player.Player;
@@ -30,22 +28,16 @@ public class Main {
 		Player p1 = new Player("p1", Symbol.O);
 		Player p2 = new Player("p2", Symbol.X);
 		
-		// For testing only: Generating random input to the game
-		// InputStream stream = Randoms.getRandomInputStream(1750, s.getRow());
-		// OXGame game = new OXGame(stream, b, p1, p2);
-		
 		OXGame game = new OXGame(b, p1, p2);
 		
-		//		Console c = new Console(Console.DEFAULT_INPUT_STREAM, game);
-		//		c.play();
+		// console version
+		// Runnable runnable = new Console(Console.DEFAULT_INPUT_STREAM, game);
+		// gui version
+		Runnable runnable = new GUI(game);
 		
-		GUI g = new GUI(game);
-		g.run();
+		runnable.run();
 		
 		// for save to result to file
-		// File file = new File("src/test/testfile/temp/finish_game_random_number.txt");
-		// PrintWriter printer = new PrintWriter(new FileOutputStream(file));
-		// printer.print(b.getHistory().toString());
-		// printer.close();
+		// game.save(b, new File("src/test/testfile/temp/finish_game_random_number.txt"));
 	}
 }

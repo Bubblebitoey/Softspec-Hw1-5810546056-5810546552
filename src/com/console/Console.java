@@ -1,9 +1,7 @@
 package com.console;
 
-import com.board.Board;
-import com.controller.OXGame;
+import com.controller.GameBoard;
 import com.player.Location;
-import com.player.Player;
 
 import java.io.InputStream;
 import java.util.*;
@@ -13,13 +11,13 @@ import java.util.*;
  * @version 1.0
  * @since 3/2/2017 AD.
  */
-public class Console {
+public class Console implements Runnable {
 	public static final InputStream DEFAULT_INPUT_STREAM = System.in;
 	
 	private Scanner input;
-	private OXGame game;
+	private GameBoard game;
 	
-	public Console(InputStream inputStream, OXGame game) {
+	public Console(InputStream inputStream, GameBoard game) {
 		input = new Scanner(inputStream);
 		this.game = game;
 	}
@@ -30,7 +28,7 @@ public class Console {
 	 * @return the position that parse from the input.
 	 */
 	private Location input() {
-		System.out.println(String.format("Player %s's turn.", game.getCurrentPlayer()));
+		System.out.println(String.format("Player %s's turn.", game.currentPlayer()));
 		try {
 			System.out.print("Please select row: ");
 			int row = input.nextInt();
@@ -48,12 +46,10 @@ public class Console {
 		}
 	}
 	
-	/**
-	 * play the game
-	 */
-	public void play() {
+	@Override
+	public void run() {
 		game.printBoard();
-		while (game.getBoardState() == Board.State.PLAYING) {
+		while (game.getGameState() == GameBoard.State.PLAYING) {
 			Location p = input();
 			
 			if (p == null) {
@@ -62,14 +58,14 @@ public class Console {
 				boolean success = game.insert(p);
 				if (success) {
 					game.printBoard();
-					if (game.getBoardState() == Board.State.PLAYING) game.swapPlayer();
+					if (game.getGameState() == GameBoard.State.PLAYING) game.nextPlayer();
 				}
 			}
 		}
 		
-		if (game.getBoardState() == Board.State.DRAW) {
+		if (game.getGameState() == GameBoard.State.DRAW) {
 			System.out.println("Draw.");
-		} else if (game.getBoardState() == Board.State.WIN) {
+		} else if (game.getGameState() == GameBoard.State.WIN) {
 			System.out.println(game.getWinner() + " winner.");
 		}
 	}

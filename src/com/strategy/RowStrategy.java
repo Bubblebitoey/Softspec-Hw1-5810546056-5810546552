@@ -35,7 +35,7 @@ public class RowStrategy extends WinStrategy {
 	public boolean execute(Location l, String winCondition) {
 		Location newPos = l.clone();
 		String compareCond = "";
-		for (int i = 0; i < board.getColumn(); i++) {
+		for (int i = 0; i < board.getSize().getColumn(); i++) {
 			newPos.setCol(i);
 			compareCond += board.getSymbol(newPos).toString();
 		}

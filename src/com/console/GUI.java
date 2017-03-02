@@ -1,11 +1,9 @@
 package com.console;
 
-import com.board.Board;
-import com.controller.OXGame;
+import com.controller.GameBoard;
 import com.player.Location;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -15,19 +13,20 @@ import java.util.*;
 /**
  * Created by bubblebitoey on 3/2/2017 AD.
  */
-public class GUI extends JFrame implements Observer {
+public class GUI extends JFrame implements Runnable {
 	private static final Dimension DEFAULT_SIZE = new Dimension(350, 350);
 	private JPanel pane = new JPanel();
 	
-	private OXGame game;
+	private GameBoard game;
 	
-	public GUI(OXGame game) {
+	public GUI(GameBoard game) {
 		super("GUI");
 		this.game = game;
 		createUIComponents();
 		setContentPane(pane);
 	}
 	
+	@Override
 	public void run() {
 		pack();
 		setMinimumSize(this.getSize());
@@ -36,7 +35,7 @@ public class GUI extends JFrame implements Observer {
 	}
 	
 	private void createUIComponents() {
-		JTable table = new JTable(game.row(), game.column()) {
+		JTable table = new JTable(game.getSize().getRow(), game.getSize().getColumn()) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -55,11 +54,11 @@ public class GUI extends JFrame implements Observer {
 		table.setFont(new Font(null, Font.BOLD, 20));
 		
 		table.setMinimumSize(DEFAULT_SIZE);
-		table.setRowHeight(DEFAULT_SIZE.height / game.column());
+		table.setRowHeight(DEFAULT_SIZE.height / game.getSize().getColumn());
 		Enumeration<TableColumn> columns = table.getColumnModel().getColumns();
 		while (columns.hasMoreElements()) {
 			TableColumn c = columns.nextElement();
-			c.setPreferredWidth(DEFAULT_SIZE.width / game.row());
+			c.setPreferredWidth(DEFAULT_SIZE.width / game.getSize().getRow());
 		}
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -74,17 +73,17 @@ public class GUI extends JFrame implements Observer {
 	}
 	
 	private void play(JTable table, Location l) {
-		if (game.getBoardState() == Board.State.PLAYING) {
+		if (game.getGameState() == GameBoard.State.PLAYING) {
 			boolean success = game.insert(l);
 			if (success) {
-				table.setValueAt(game.getCurrentPlayer().getSymbol(), l.row, l.col);
-				if (game.getBoardState() == Board.State.PLAYING) game.swapPlayer();
+				table.setValueAt(game.currentPlayer().getSymbol(), l.row, l.col);
+				if (game.getGameState() == GameBoard.State.PLAYING) game.nextPlayer();
 			}
 		}
 		
-		if (game.getBoardState() == Board.State.DRAW) {
+		if (game.getGameState() == GameBoard.State.DRAW) {
 			System.out.println("draw");
-		} else if (game.getBoardState() == Board.State.WIN) {
+		} else if (game.getGameState() == GameBoard.State.WIN) {
 			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", game.getWinner() + " winner.", JOptionPane.YES_NO_OPTION);
 			if (result == JOptionPane.YES_OPTION) {
 				System.out.println("play again.");
@@ -92,10 +91,5 @@ public class GUI extends JFrame implements Observer {
 				System.out.println("done.");
 			}
 		}
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		
 	}
 }

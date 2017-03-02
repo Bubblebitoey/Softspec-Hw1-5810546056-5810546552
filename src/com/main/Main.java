@@ -3,7 +3,8 @@ package com.main;
 import com.board.Board;
 import com.board.shape.Shape;
 import com.board.shape.Square;
-import com.console.OXGame;
+import com.console.Console;
+import com.controller.OXGame;
 import com.player.Player;
 import com.player.Symbol;
 
@@ -23,8 +24,7 @@ public class Main {
 	 * 		no used
 	 */
 	public static void main(String[] args) {
-		Shape s = Square.getSize(30);
-		Board b = new Board(s, 10);
+		Board b = new Board(Square.getSize(30), 10);
 		
 		Player p1 = new Player("p1", Symbol.O);
 		Player p2 = new Player("p2", Symbol.X);
@@ -34,7 +34,9 @@ public class Main {
 		// OXGame game = new OXGame(stream, b, p1, p2);
 		
 		OXGame game = new OXGame(b, p1, p2);
-		game.run();
+		
+		Console c = new Console(Console.DEFAULT_INPUT_STREAM, game);
+		c.play();
 		
 		// for save to result to file
 		// File file = new File("src/test/testfile/temp/finish_game_random_number.txt");

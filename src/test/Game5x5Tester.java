@@ -3,7 +3,7 @@ package test;
 import com.board.Board;
 import com.board.shape.Shape;
 import com.board.shape.Square;
-import com.console.OXGame;
+import com.controller.OXGame;
 import com.player.Location;
 import com.player.Player;
 import com.player.Symbol;

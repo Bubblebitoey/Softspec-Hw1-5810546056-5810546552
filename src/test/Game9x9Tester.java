@@ -2,6 +2,7 @@ package test;
 
 import com.board.Board;
 import com.board.shape.Square;
+import com.console.Console;
 import com.controller.OXGame;
 import com.player.Location;
 import com.player.Player;
@@ -27,6 +28,8 @@ public class Game9x9Tester {
 	private Player p1 = new Player("p1", Symbol.O);
 	private Player p2 = new Player("p2", Symbol.X);
 	
+	private OXGame g = new OXGame(b, p1, p2);
+	
 	private InputStream reader(String fileName) {
 		return Game9x9Tester.class.getResourceAsStream(folder + "/" + fileName);
 	}
@@ -42,9 +45,9 @@ public class Game9x9Tester {
 		final String testingFile = "row.txt";
 		InputStream s = reader(testingFile);
 		
-		OXGame g = new OXGame(s, b, p1, p2);
+		Console c = new Console(s, g);
 		try {
-			g.run();
+			c.play();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
@@ -60,9 +63,9 @@ public class Game9x9Tester {
 		final String testingFile = "col.txt";
 		InputStream s = reader(testingFile);
 		
-		OXGame g = new OXGame(s, b, p1, p2);
+		Console c = new Console(s, g);
 		try {
-			g.run();
+			c.play();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
@@ -79,9 +82,9 @@ public class Game9x9Tester {
 		final String testingFile = "dia_l.txt";
 		InputStream s = reader(testingFile);
 		
-		OXGame g = new OXGame(s, b, p1, p2);
+		Console c = new Console(s, g);
 		try {
-			g.run();
+			c.play();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
@@ -96,9 +99,9 @@ public class Game9x9Tester {
 		final String testingFile = "dia_r.txt";
 		InputStream s = reader(testingFile);
 		
-		OXGame g = new OXGame(s, b, p1, p2);
+		Console c = new Console(s, g);
 		try {
-			g.run();
+			c.play();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}

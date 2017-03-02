@@ -1,16 +1,15 @@
 package com.controller;
 
 import com.board.Board;
+import com.player.Location;
 import com.player.Player;
-
-import java.io.InputStream;
 
 /**
  * This class will play the Tic-Tac-Toe game, <br>
  * You can play by using {@link OXGame#OXGame(Board, Player...)} - this will allow you to play the game in console.
  *
  * @author bubblebitoey
- * @version 3.1
+ * @version 3.2
  * @since 2/23/2017 AD.
  */
 public class OXGame {
@@ -43,6 +42,34 @@ public class OXGame {
 		this.players = players;
 	}
 	
+	public boolean insert(Location l) {
+		return board.insert(getCurrentPlayer(), l);
+	}
+	
+	public void fail() {
+		board.fail();
+	}
+	
+	public void printBoard() {
+		System.out.println(board.toString());
+	}
+	
+	public Board.State getBoardState() {
+		return board.state;
+	}
+	
+	public Player getWinner() {
+		return board.winner;
+	}
+	
+	public int row() {
+		return board.getRow();
+	}
+	
+	public int column() {
+		return board.getColumn();
+	}
+	
 	/**
 	 * swap the player to the next player.
 	 */
@@ -60,9 +87,5 @@ public class OXGame {
 	 */
 	public Player getCurrentPlayer() {
 		return players[currentPlayer];
-	}
-	
-	public Board getBoard() {
-		return board;
 	}
 }

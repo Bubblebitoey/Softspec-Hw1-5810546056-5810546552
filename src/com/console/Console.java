@@ -43,7 +43,7 @@ public class Console {
 			input.nextLine();
 			return null;
 		} catch (NoSuchElementException e) {
-			game.getBoard().fail();
+			game.fail();
 			throw e;
 		}
 	}
@@ -52,25 +52,25 @@ public class Console {
 	 * play the game
 	 */
 	public void play() {
-		System.out.println(game.getBoard());
-		while (game.getBoard().state == Board.State.PLAYING) {
+		game.printBoard();
+		while (game.getBoardState() == Board.State.PLAYING) {
 			Location p = input();
 			
 			if (p == null) {
 				System.err.println("Accepted only number");
 			} else {
-				boolean success = game.getBoard().insert(game.getCurrentPlayer(), p);
+				boolean success = game.insert(p);
 				if (success) {
-					System.out.println(game.getBoard());
-					if (game.getBoard().state == Board.State.PLAYING) game.swapPlayer();
+					game.printBoard();
+					if (game.getBoardState() == Board.State.PLAYING) game.swapPlayer();
 				}
 			}
 		}
 		
-		if (game.getBoard().state == Board.State.DRAW) {
+		if (game.getBoardState() == Board.State.DRAW) {
 			System.out.println("Draw.");
-		} else if (game.getBoard().state == Board.State.WIN) {
-			System.out.println(game.getBoard().winner + " winner.");
+		} else if (game.getBoardState() == Board.State.WIN) {
+			System.out.println(game.getWinner() + " winner.");
 		}
 	}
 }

@@ -5,6 +5,9 @@ import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
+import test.subtester.Game30x30Tester;
+import test.subtester.Game5x5Tester;
+import test.subtester.Game9x9Tester;
 
 /**
  * Main of the unit test, you can run this class to run all of unit-test that available

@@ -1,9 +1,7 @@
-package test;
+package test.subtester;
 
 import com.board.Board;
-import com.board.shape.Shape;
 import com.board.shape.Square;
-import com.console.Console;
 import com.controller.GameBoard;
 import com.controller.OXGame;
 import com.player.Location;
@@ -13,6 +11,8 @@ import com.strategy.DiagonalStrategy;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import test.TestConsole;
+import test.Tester;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,24 +25,22 @@ import java.util.*;
  */
 public class Game30x30Tester {
 	private final String folder = "testfile/_30x30/";
-	private final Shape s = Square.getSize(30);
-	private final int winCond = 10;
 	
-	private Board b;
-	private GameBoard g;
+	private Board b = new Board(Square.getSize(30), 10);
 	
 	private Player p1 = new Player("p1", Symbol.O);
 	private Player p2 = new Player("p2", Symbol.X);
 	
+	private GameBoard game = new OXGame(b, p1, p2);
+	
 	
 	private InputStream reader(String fileName) {
-		return Game30x30Tester.class.getResourceAsStream(folder + "/" + fileName);
+		return Tester.class.getResourceAsStream(folder + "/" + fileName);
 	}
 	
 	@Before
-	public void setBoard() {
-		b = new Board(s, winCond);
-		g = new OXGame(b, p1, p2);
+	public void restart() {
+		game.restart();
 	}
 	
 	@Test
@@ -50,20 +48,19 @@ public class Game30x30Tester {
 		final String testingFile = "col.txt";
 		InputStream s = reader(testingFile);
 		
-		Console c = new Console(s, g);
 		try {
-			c.run();
+			new TestConsole(s, game).run();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
 		
-		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Location(17, 6)));
-		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(25, 27)));
+		Assert.assertEquals(p2.getSymbol(), b.getSymbol(new Location(17, 6)));
+		Assert.assertEquals(p1.getSymbol(), b.getSymbol(new Location(25, 27)));
 		
 		Assert.assertTrue(b.isEmpty(new Location(14, 4)));
 		Assert.assertFalse(b.isFull());
 		
-		Assert.assertTrue(g.getWinner().equals(p1));
+		Assert.assertTrue(game.getWinner().equals(p2));
 	}
 	
 	@Test
@@ -71,9 +68,8 @@ public class Game30x30Tester {
 		final String testingFile = "row.txt";
 		InputStream s = reader(testingFile);
 		
-		Console c = new Console(s, g);
 		try {
-			c.run();
+			new TestConsole(s, game).run();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
@@ -90,7 +86,7 @@ public class Game30x30Tester {
 		
 		Assert.assertFalse(b.isFull());
 		
-		Assert.assertTrue(g.getWinner().equals(p1));
+		Assert.assertTrue(game.getWinner().equals(p2));
 	}
 	
 	@Test
@@ -98,16 +94,15 @@ public class Game30x30Tester {
 		final String testingFile = "dia_l.txt";
 		InputStream s = reader(testingFile);
 		
-		Console c = new Console(s, g);
 		try {
-			c.run();
+			new TestConsole(s, game).run();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
 		
 		Assert.assertEquals(Symbol.WIN, b.getSymbol(new Location(17, 22)));
 		Assert.assertFalse(b.isFull());
-		Assert.assertTrue(g.getWinner().equals(p2));
+		Assert.assertTrue(game.getWinner().equals(p1));
 	}
 	
 	@Test
@@ -115,16 +110,15 @@ public class Game30x30Tester {
 		final String testingFile = "dia_r.txt";
 		InputStream s = reader(testingFile);
 		
-		Console c = new Console(s, g);
 		try {
-			c.run();
+			new TestConsole(s, game).run();
 		} catch (NoSuchElementException e) {
 			Assert.fail("Game Must End when read file done");
 		}
 		
 		String win = "";
-		for (int i = 0; i < winCond; i++) {
-			win += p2.getSymbol();
+		for (int i = 0; i < b.getConsecutive(); i++) {
+			win += p1.getSymbol();
 		}
 		
 		Assert.assertTrue(new DiagonalStrategy(b).execute(new Location(11, 15), win));

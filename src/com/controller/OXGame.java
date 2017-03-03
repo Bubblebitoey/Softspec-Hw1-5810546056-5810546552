@@ -53,13 +53,16 @@ public class OXGame implements GameBoard {
 		this.players = players;
 		
 		winner = -1;
-		currentPlayer = 1;
-		state = State.PLAYING;
+		currentPlayer = 0;
+		state = State.INIT;
 	}
 	
 	@Override
 	public boolean insert(Location location) {
 		if (state == State.ERROR || state == State.END) return false;
+		
+		if (state == State.PLAYING) start();
+		
 		if (board.insert(currentPlayer(), location)) {
 			// change game state.
 			if (checkWin(currentPlayer(), location)) {
@@ -110,6 +113,11 @@ public class OXGame implements GameBoard {
 	public void fail() {
 		state = State.ERROR;
 		// System.exit(1);
+	}
+	
+	@Override
+	public void start() {
+		state = State.PLAYING;
 	}
 	
 	@Override

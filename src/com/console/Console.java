@@ -48,7 +48,9 @@ public class Console implements Runnable {
 	
 	@Override
 	public void run() {
+		game.start();
 		game.printBoard();
+		
 		while (game.getGameState() == GameBoard.State.PLAYING) {
 			Location p = input();
 			

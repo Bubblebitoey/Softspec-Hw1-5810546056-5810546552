@@ -16,7 +16,6 @@ import com.player.Symbol;
  * @since 2/23/2017 AD.
  */
 public class Main {
-	
 	/**
 	 * main method to run the game
 	 *

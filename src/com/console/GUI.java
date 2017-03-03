@@ -18,18 +18,24 @@ import java.util.*;
 public class GUI extends JFrame implements Runnable {
 	private static final Dimension DEFAULT_SIZE = new Dimension(350, 350);
 	private JPanel pane = new JPanel();
+	private JLabel nameLb = new JLabel("Current player: name");
 	
 	private GameBoard game;
 	
 	public GUI(GameBoard game) {
 		super("GUI");
 		this.game = game;
+		// update current player name
+		nameLb.setText("Current player: " + game.currentPlayer().getName());
+		
 		createUIComponents();
 		setContentPane(pane);
 	}
 	
 	@Override
 	public void run() {
+		game.start();
+		
 		pack();
 		setMinimumSize(this.getSize());
 		setVisible(true);
@@ -41,10 +47,7 @@ public class GUI extends JFrame implements Runnable {
 		
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north, BoxLayout.LINE_AXIS));
-		// north.add(Box.createHorizontalGlue()); // glue to right
-		north.add(new JLabel("Status: "));
-		// north.add(Box.createRigidArea(new Dimension(40, 0))); // set gap
-		north.add(new JLabel("Something"));
+		north.add(nameLb);
 		
 		pane.add(north);
 		pane.add(tableSetting());
@@ -108,19 +111,21 @@ public class GUI extends JFrame implements Runnable {
 			if (success) {
 				table.setValueAt(game.currentPlayer().getSymbol(), l.row, l.col);
 				if (game.getGameState() == GameBoard.State.PLAYING) game.nextPlayer();
+				// update name
+				nameLb.setText("Current player: " + game.currentPlayer().getName());
 			}
 		}
 		
 		String message = "";
 		
 		if (game.getGameState() == GameBoard.State.DRAW) {
-			message = "Draw!";
+			nameLb.setText("Draw!");
 		} else if (game.getGameState() == GameBoard.State.WIN) {
-			message = game.getWinner() + " winner.";
+			nameLb.setText("Winner player: " + game.getWinner());
 		}
 		
-		if (game.getGameState() != GameBoard.State.PLAYING) {
-			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", message, JOptionPane.YES_NO_OPTION);
+		if (game.getGameState() != GameBoard.State.PLAYING && game.getGameState() != GameBoard.State.END) {
+			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", "Message", JOptionPane.YES_NO_OPTION);
 			if (result == JOptionPane.YES_OPTION) {
 				game.restart();
 				removeAll(table);

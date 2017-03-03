@@ -26,7 +26,7 @@ public interface GameBoard {
 	 * </ul>
 	 */
 	public enum State {
-		PLAYING, WIN, DRAW, END, ERROR;
+		INIT, PLAYING, END, WIN, DRAW, ERROR;
 	}
 	
 	public boolean insert(Location location);
@@ -35,9 +35,11 @@ public interface GameBoard {
 	
 	public void nextPlayer();
 	
-	public void fail();
+	public void start();
 	
 	public void end();
+	
+	public void fail();
 	
 	public void restart();
 	

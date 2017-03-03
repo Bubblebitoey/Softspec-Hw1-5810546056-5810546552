@@ -1,4 +1,4 @@
-package com.board.shape;
+package com.model.board.shape;
 
 /**
  * The Board Size with rectangle shape (row and column are <b>NOT</b> necessary to equal). <br>

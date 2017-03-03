@@ -1,4 +1,4 @@
-package com.player;
+package com.model.player;
 
 /**
  * The game player. <br>

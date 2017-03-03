@@ -1,12 +1,12 @@
 package com.main;
 
-import com.board.Board;
-import com.board.shape.Square;
-import com.console.GUI;
+import com.model.board.Board;
+import com.model.board.shape.Square;
+import com.view.gui.MainPage;
 import com.controller.GameBoard;
 import com.controller.OXGame;
-import com.player.Player;
-import com.player.Symbol;
+import com.model.player.Player;
+import com.model.player.Symbol;
 
 /**
  * Main class
@@ -34,7 +34,7 @@ public class Main {
 		// Runnable runnable = new Console(Console.DEFAULT_INPUT_STREAM, game);
 		
 		// gui version
-		Runnable runnable = new GUI(game);
+		Runnable runnable = new MainPage(game);
 		
 		
 		runnable.run();

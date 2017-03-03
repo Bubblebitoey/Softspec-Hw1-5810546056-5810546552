@@ -1,8 +1,8 @@
-package com.history;
+package com.model.history;
 
-import com.board.Board;
-import com.player.Location;
-import com.player.Player;
+import com.model.board.Board;
+import com.model.player.Location;
+import com.model.player.Player;
 
 import java.time.LocalDateTime;
 

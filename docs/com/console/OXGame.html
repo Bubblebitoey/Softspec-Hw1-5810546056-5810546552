@@ -151,7 +151,7 @@ implements java.lang.Runnable</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../com/board/Board.html" title="class in com.board">Board</a></code></td>
+<td class="colFirst"><code>private <a href="../../com/board/Board.html" title="class in com.model.board">Board</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#board">board</a></span></code>
 <div class="block">The game board.</div>
 </td>
@@ -171,7 +171,7 @@ implements java.lang.Runnable</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#input">input</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../com/player/Player.html" title="class in com.player">Player</a>[]</code></td>
+<td class="colFirst"><code>private <a href="../../com/player/Player.html" title="class in com.model.player">Player</a>[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#players">players</a></span></code>
 <div class="block">All players.</div>
 </td>
@@ -191,16 +191,16 @@ implements java.lang.Runnable</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#OXGame-com.board.Board-com.player.Player...-">OXGame</a></span>(<a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board,
-      <a href="../../com/player/Player.html" title="class in com.player">Player</a>...&nbsp;players)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#OXGame-com.board.Board-com.player.Player...-">OXGame</a></span>(<a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board,
+      <a href="../../com/player/Player.html" title="class in com.model.player">Player</a>...&nbsp;players)</code>
 <div class="block">use default input stream to play the game that allow you to play the game in console such as <code>terminal</code> or <code>compiler</code> <br>
  To setting the game you must have <b>The board</b> and <b>The player</b>.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#OXGame-java.io.InputStream-com.board.Board-com.player.Player...-">OXGame</a></span>(java.io.InputStream&nbsp;s,
-      <a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board,
-      <a href="../../com/player/Player.html" title="class in com.player">Player</a>...&nbsp;players)</code>
+      <a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board,
+      <a href="../../com/player/Player.html" title="class in com.model.player">Player</a>...&nbsp;players)</code>
 <div class="block">this constructor will use optional InputStream as parameter that allow you to pass any input stream that you want inside the game.</div>
 </td>
 </tr>
@@ -220,13 +220,13 @@ implements java.lang.Runnable</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>private <a href="../../com/player/Player.html" title="class in com.player">Player</a></code></td>
+<td class="colFirst"><code>private <a href="../../com/player/Player.html" title="class in com.model.player">Player</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#getCurrentPlayer--">getCurrentPlayer</a></span>()</code>
 <div class="block">get the current playing player</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>private <a href="../../com/player/Location.html" title="class in com.player">Location</a></code></td>
+<td class="colFirst"><code>private <a href="../../com/player/Location.html" title="class in com.model.player">Location</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/console/OXGame.html#input--">input</a></span>()</code>
 <div class="block">ask of input position.</div>
 </td>
@@ -289,7 +289,7 @@ implements java.lang.Runnable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>board</h4>
-<pre>private&nbsp;<a href="../../com/board/Board.html" title="class in com.board">Board</a> board</pre>
+<pre>private&nbsp;<a href="../../com/board/Board.html" title="class in com.model.board">Board</a> board</pre>
 <div class="block">The game board.</div>
 </li>
 </ul>
@@ -309,7 +309,7 @@ implements java.lang.Runnable</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>players</h4>
-<pre>private&nbsp;<a href="../../com/player/Player.html" title="class in com.player">Player</a>[] players</pre>
+<pre>private&nbsp;<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>[] players</pre>
 <div class="block">All players.</div>
 </li>
 </ul>
@@ -327,8 +327,8 @@ implements java.lang.Runnable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>OXGame</h4>
-<pre>public&nbsp;OXGame(<a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board,
-              <a href="../../com/player/Player.html" title="class in com.player">Player</a>...&nbsp;players)</pre>
+<pre>public&nbsp;OXGame(<a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board,
+              <a href="../../com/player/Player.html" title="class in com.model.player">Player</a>...&nbsp;players)</pre>
 <div class="block">use default input stream to play the game that allow you to play the game in console such as <code>terminal</code> or <code>compiler</code> <br>
  To setting the game you must have <b>The board</b> and <b>The player</b>.</div>
 <dl>
@@ -345,8 +345,8 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>OXGame</h4>
 <pre>public&nbsp;OXGame(java.io.InputStream&nbsp;s,
-              <a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board,
-              <a href="../../com/player/Player.html" title="class in com.player">Player</a>...&nbsp;players)</pre>
+              <a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board,
+              <a href="../../com/player/Player.html" title="class in com.model.player">Player</a>...&nbsp;players)</pre>
 <div class="block">this constructor will use optional InputStream as parameter that allow you to pass any input stream that you want inside the game.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -370,7 +370,7 @@ implements java.lang.Runnable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>input</h4>
-<pre>private&nbsp;<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;input()</pre>
+<pre>private&nbsp;<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;input()</pre>
 <div class="block">ask of input position.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -394,7 +394,7 @@ implements java.lang.Runnable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getCurrentPlayer</h4>
-<pre>private&nbsp;<a href="../../com/player/Player.html" title="class in com.player">Player</a>&nbsp;getCurrentPlayer()</pre>
+<pre>private&nbsp;<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>&nbsp;getCurrentPlayer()</pre>
 <div class="block">get the current playing player</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>

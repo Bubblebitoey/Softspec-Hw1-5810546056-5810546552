@@ -1,8 +1,8 @@
-com.board
-com.board.shape
+com.model.board
+com.model.board.shape
 com.console
-com.history
+com.model.history
 com.main
-com.player
-com.strategy
+com.model.player
+com.model.strategy
 test

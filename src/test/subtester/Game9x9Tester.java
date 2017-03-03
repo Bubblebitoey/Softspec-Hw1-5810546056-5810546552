@@ -1,12 +1,12 @@
 package test.subtester;
 
-import com.board.Board;
-import com.board.shape.Square;
+import com.model.board.Board;
+import com.model.board.shape.Square;
 import com.controller.GameBoard;
 import com.controller.OXGame;
-import com.player.Location;
-import com.player.Player;
-import com.player.Symbol;
+import com.model.player.Location;
+import com.model.player.Player;
+import com.model.player.Symbol;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

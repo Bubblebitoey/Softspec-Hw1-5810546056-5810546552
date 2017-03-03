@@ -1,4 +1,4 @@
-package com.player;
+package com.model.player;
 
 /**
  * The enum that represent the symbol of each player.

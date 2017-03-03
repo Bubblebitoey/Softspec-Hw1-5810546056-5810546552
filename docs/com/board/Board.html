@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../com/board/Board.State.html" title="enum in com.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../com/board/Board.State.html" title="enum in com.model.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?com/board/Board.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.board</div>
+<div class="subTitle">com.model.board</div>
 <h2 title="Class Board" class="title">Class Board</h2>
 </div>
 <div class="contentContainer">
@@ -100,7 +100,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.board.Board</li>
+<li>com.model.board.Board</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +111,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Board</span>
 extends java.lang.Object</pre>
-<div class="block">The board of the game that created by <a href="../../com/board/shape/Shape.html" title="class in com.board.shape"><code>Shape</code></a> class. <br>
+<div class="block">The board of the game that created by <a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape"><code>Shape</code></a> class. <br>
  In the board you can do:
  <ol>
  <li><a href="../../com/board/Board.html#insert-com.player.Player-com.player.Location-"><code>insert(Player, Location)</code></a> - insert some symbol to that position.</li>
@@ -145,7 +145,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.State.html" title="enum in com.board">Board.State</a></span></code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.State.html" title="enum in com.model.board">Board.State</a></span></code>
 <div class="block">The board state.</div>
 </td>
 </tr>
@@ -165,7 +165,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../com/player/Symbol.html" title="enum in com.player">Symbol</a>[][]</code></td>
+<td class="colFirst"><code>private <a href="../../com/player/Symbol.html" title="enum in com.model.player">Symbol</a>[][]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#board">board</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -179,7 +179,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../com/history/BoardHistory.html" title="class in com.history">BoardHistory</a></code></td>
+<td class="colFirst"><code>private <a href="../../com/history/BoardHistory.html" title="class in com.model.history">BoardHistory</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#history">history</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -193,13 +193,13 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#row">row</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../com/board/Board.State.html" title="enum in com.board">Board.State</a></code></td>
+<td class="colFirst"><code><a href="../../com/board/Board.State.html" title="enum in com.model.board">Board.State</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#state">state</a></span></code>
 <div class="block">current state.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../../com/player/Player.html" title="class in com.player">Player</a></code></td>
+<td class="colFirst"><code><a href="../../com/player/Player.html" title="class in com.model.player">Player</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#winner">winner</a></span></code>
 <div class="block">the winner, if no winner this variable will be <code>null</code>.</div>
 </td>
@@ -219,14 +219,14 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../com/board/Board.html#Board-com.board.shape.Shape-">Board</a></span>(<a href="../../com/board/shape/Shape.html" title="class in com.board.shape">Shape</a>&nbsp;s)</code>
-<div class="block">Create the board with the <a href="../../com/board/shape/Shape.html" title="class in com.board.shape"><code>Shape</code></a>.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../com/board/Board.html#Board-com.board.shape.Shape-">Board</a></span>(<a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape">Shape</a>&nbsp;s)</code>
+<div class="block">Create the board with the <a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape"><code>Shape</code></a>.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../com/board/Board.html#Board-com.board.shape.Shape-int-">Board</a></span>(<a href="../../com/board/shape/Shape.html" title="class in com.board.shape">Shape</a>&nbsp;s,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../com/board/Board.html#Board-com.board.shape.Shape-int-">Board</a></span>(<a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape">Shape</a>&nbsp;s,
      int&nbsp;winCondition)</code>
-<div class="block">Create the board with <a href="../../com/board/shape/Shape.html" title="class in com.board.shape"><code>Shape</code></a> and the win condition.</div>
+<div class="block">Create the board with <a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape"><code>Shape</code></a> and the win condition.</div>
 </td>
 </tr>
 </table>
@@ -246,8 +246,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#checkWin-com.player.Player-com.player.Location-">checkWin</a></span>(<a href="../../com/player/Player.html" title="class in com.player">Player</a>&nbsp;player,
-        <a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#checkWin-com.player.Player-com.player.Location-">checkWin</a></span>(<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>&nbsp;player,
+        <a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</code>
 <div class="block">To check that current player win or not.</div>
 </td>
 </tr>
@@ -262,7 +262,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#getColumn--">getColumn</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="../../com/history/BoardHistory.html" title="class in com.history">BoardHistory</a></code></td>
+<td class="colFirst"><code><a href="../../com/history/BoardHistory.html" title="class in com.model.history">BoardHistory</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#getHistory--">getHistory</a></span>()</code>
 <div class="block">get the board history.</div>
 </td>
@@ -272,16 +272,16 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#getRow--">getRow</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="../../com/player/Symbol.html" title="enum in com.player">Symbol</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#getSymbol-com.player.Location-">getSymbol</a></span>(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;position)</code>
-<div class="block">get the symbol in the board by <a href="../../com/player/Location.html" title="class in com.player"><code>position</code></a>.</div>
+<td class="colFirst"><code><a href="../../com/player/Symbol.html" title="enum in com.model.player">Symbol</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#getSymbol-com.player.Location-">getSymbol</a></span>(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;position)</code>
+<div class="block">get the symbol in the board by <a href="../../com/player/Location.html" title="class in com.model.player"><code>position</code></a>.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#insert-com.player.Player-com.player.Location-">insert</a></span>(<a href="../../com/player/Player.html" title="class in com.player">Player</a>&nbsp;player,
-      <a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</code>
-<div class="block">Insert the player symbol (<a href="../../com/player/Player.html#getSymbol--"><code>Player.getSymbol()</code></a>) at position <a href="../../com/player/Location.html" title="class in com.player"><code>p</code></a> in the board.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#insert-com.player.Player-com.player.Location-">insert</a></span>(<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>&nbsp;player,
+      <a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</code>
+<div class="block">Insert the player symbol (<a href="../../com/player/Player.html#getSymbol--"><code>Player.getSymbol()</code></a>) at position <a href="../../com/player/Location.html" title="class in com.model.player"><code>p</code></a> in the board.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -292,13 +292,13 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#isEmpty-com.player.Location-">isEmpty</a></span>(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#isEmpty-com.player.Location-">isEmpty</a></span>(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</code>
 <div class="block">is the position empty.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#isValid-com.player.Location-">isValid</a></span>(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/board/Board.html#isValid-com.player.Location-">isValid</a></span>(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</code>
 <div class="block">must in board size.</div>
 </td>
 </tr>
@@ -370,7 +370,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>history</h4>
-<pre>private&nbsp;<a href="../../com/history/BoardHistory.html" title="class in com.history">BoardHistory</a> history</pre>
+<pre>private&nbsp;<a href="../../com/history/BoardHistory.html" title="class in com.model.history">BoardHistory</a> history</pre>
 </li>
 </ul>
 <a name="board">
@@ -379,7 +379,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>board</h4>
-<pre>private&nbsp;<a href="../../com/player/Symbol.html" title="enum in com.player">Symbol</a>[][] board</pre>
+<pre>private&nbsp;<a href="../../com/player/Symbol.html" title="enum in com.model.player">Symbol</a>[][] board</pre>
 </li>
 </ul>
 <a name="row">
@@ -406,7 +406,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>state</h4>
-<pre>public&nbsp;<a href="../../com/board/Board.State.html" title="enum in com.board">Board.State</a> state</pre>
+<pre>public&nbsp;<a href="../../com/board/Board.State.html" title="enum in com.model.board">Board.State</a> state</pre>
 <div class="block">current state.</div>
 </li>
 </ul>
@@ -416,7 +416,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>winner</h4>
-<pre>public&nbsp;<a href="../../com/player/Player.html" title="class in com.player">Player</a> winner</pre>
+<pre>public&nbsp;<a href="../../com/player/Player.html" title="class in com.model.player">Player</a> winner</pre>
 <div class="block">the winner, if no winner this variable will be <code>null</code>.</div>
 </li>
 </ul>
@@ -434,8 +434,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>Board</h4>
-<pre>public&nbsp;Board(<a href="../../com/board/shape/Shape.html" title="class in com.board.shape">Shape</a>&nbsp;s)</pre>
-<div class="block">Create the board with the <a href="../../com/board/shape/Shape.html" title="class in com.board.shape"><code>Shape</code></a>. <br>
+<pre>public&nbsp;Board(<a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape">Shape</a>&nbsp;s)</pre>
+<div class="block">Create the board with the <a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape"><code>Shape</code></a>. <br>
  Important: This Constructor will create board with <a href="../../com/board/Board.html#DEFAULT_WIN_CONDITION"><code>DEFAULT_WIN_CONDITION</code></a> as game win condition</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -449,9 +449,9 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Board</h4>
-<pre>public&nbsp;Board(<a href="../../com/board/shape/Shape.html" title="class in com.board.shape">Shape</a>&nbsp;s,
+<pre>public&nbsp;Board(<a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape">Shape</a>&nbsp;s,
              int&nbsp;winCondition)</pre>
-<div class="block">Create the board with <a href="../../com/board/shape/Shape.html" title="class in com.board.shape"><code>Shape</code></a> and the win condition.</div>
+<div class="block">Create the board with <a href="../../com/board/shape/Shape.html" title="class in com.model.board.shape"><code>Shape</code></a> and the win condition.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>s</code> - The board shape or the board size.</dd>
@@ -473,9 +473,9 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>insert</h4>
-<pre>public&nbsp;boolean&nbsp;insert(<a href="../../com/player/Player.html" title="class in com.player">Player</a>&nbsp;player,
-                      <a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</pre>
-<div class="block">Insert the player symbol (<a href="../../com/player/Player.html#getSymbol--"><code>Player.getSymbol()</code></a>) at position <a href="../../com/player/Location.html" title="class in com.player"><code>p</code></a> in the board.</div>
+<pre>public&nbsp;boolean&nbsp;insert(<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>&nbsp;player,
+                      <a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</pre>
+<div class="block">Insert the player symbol (<a href="../../com/player/Player.html#getSymbol--"><code>Player.getSymbol()</code></a>) at position <a href="../../com/player/Location.html" title="class in com.model.player"><code>p</code></a> in the board.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>player</code> - the current playing player.</dd>
@@ -491,8 +491,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getSymbol</h4>
-<pre>public&nbsp;<a href="../../com/player/Symbol.html" title="enum in com.player">Symbol</a>&nbsp;getSymbol(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;position)</pre>
-<div class="block">get the symbol in the board by <a href="../../com/player/Location.html" title="class in com.player"><code>position</code></a>.</div>
+<pre>public&nbsp;<a href="../../com/player/Symbol.html" title="enum in com.model.player">Symbol</a>&nbsp;getSymbol(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;position)</pre>
+<div class="block">get the symbol in the board by <a href="../../com/player/Location.html" title="class in com.model.player"><code>position</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>position</code> - the position that want to get symbol.</dd>
@@ -525,13 +525,13 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getHistory</h4>
-<pre>public&nbsp;<a href="../../com/history/BoardHistory.html" title="class in com.history">BoardHistory</a>&nbsp;getHistory()</pre>
+<pre>public&nbsp;<a href="../../com/history/BoardHistory.html" title="class in com.model.history">BoardHistory</a>&nbsp;getHistory()</pre>
 <div class="block">get the board history.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the history of current board.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../com/history/BoardHistory.html" title="class in com.history"><code>BoardHistory</code></a></dd>
+<dd><a href="../../com/history/BoardHistory.html" title="class in com.model.history"><code>BoardHistory</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -555,10 +555,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>checkWin</h4>
-<pre>private&nbsp;boolean&nbsp;checkWin(<a href="../../com/player/Player.html" title="class in com.player">Player</a>&nbsp;player,
-                         <a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</pre>
+<pre>private&nbsp;boolean&nbsp;checkWin(<a href="../../com/player/Player.html" title="class in com.model.player">Player</a>&nbsp;player,
+                         <a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</pre>
 <div class="block">To check that current player win or not. <br>
- This method using Strategy patterns which in the strategy package (<a href="../../com/strategy/WinStrategy.html" title="class in com.strategy"><code>WinStrategy</code></a>, etc.).</div>
+ This method using Strategy patterns which in the strategy package (<a href="../../com/strategy/WinStrategy.html" title="class in com.model.strategy"><code>WinStrategy</code></a>, etc.).</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>player</code> - current game player.</dd>
@@ -574,7 +574,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>isValid</h4>
-<pre>public&nbsp;boolean&nbsp;isValid(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</pre>
+<pre>public&nbsp;boolean&nbsp;isValid(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</pre>
 <div class="block">must in board size.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -590,7 +590,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>isEmpty</h4>
-<pre>public&nbsp;boolean&nbsp;isEmpty(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;p)</pre>
+<pre>public&nbsp;boolean&nbsp;isEmpty(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;p)</pre>
 <div class="block">is the position empty.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -678,7 +678,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../com/board/Board.State.html" title="enum in com.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../com/board/Board.State.html" title="enum in com.model.board"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?com/board/Board.html" target="_top">Frames</a></li>

@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../com/strategy/DiagonalStrategy.html" title="class in com.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../com/strategy/DiagonalStrategy.html" title="class in com.model.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?com/strategy/ColumnStrategy.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.strategy</div>
+<div class="subTitle">com.model.strategy</div>
 <h2 title="Class ColumnStrategy" class="title">Class ColumnStrategy</h2>
 </div>
 <div class="contentContainer">
@@ -100,10 +100,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../com/strategy/WinStrategy.html" title="class in com.strategy">com.strategy.WinStrategy</a></li>
+<li><a href="../../com/strategy/WinStrategy.html" title="class in com.model.strategy">com.model.algorithm.WinStrategy</a></li>
 <li>
 <ul class="inheritance">
-<li>com.strategy.ColumnStrategy</li>
+<li>com.model.algorithm.ColumnStrategy</li>
 </ul>
 </li>
 </ul>
@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ColumnStrategy</span>
-extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strategy">WinStrategy</a></pre>
+extends <a href="../../com/strategy/WinStrategy.html" title="class in com.model.strategy">WinStrategy</a></pre>
 <div class="block">Check winner by <b>column</b>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -141,7 +141,7 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 <li class="blockList"><a name="fields.inherited.from.class.com.strategy.WinStrategy">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;com.strategy.<a href="../../com/strategy/WinStrategy.html" title="class in com.strategy">WinStrategy</a></h3>
+<h3>Fields inherited from class&nbsp;com.model.strategy.<a href="../../com/strategy/WinStrategy.html" title="class in com.model.strategy">WinStrategy</a></h3>
 <code><a href="../../com/strategy/WinStrategy.html#board">board</a></code></li>
 </ul>
 </li>
@@ -158,7 +158,7 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../com/strategy/ColumnStrategy.html#ColumnStrategy-com.board.Board-">ColumnStrategy</a></span>(<a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../com/strategy/ColumnStrategy.html#ColumnStrategy-com.board.Board-">ColumnStrategy</a></span>(<a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board)</code>
 <div class="block">constructor that initial with board game.</div>
 </td>
 </tr>
@@ -179,7 +179,7 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../com/strategy/ColumnStrategy.html#execute-com.player.Location-java.lang.String-">execute</a></span>(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;l,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/strategy/ColumnStrategy.html#execute-com.player.Location-java.lang.String-">execute</a></span>(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;l,
        java.lang.String&nbsp;winCondition)</code>
 <div class="block">Check the column.</div>
 </td>
@@ -212,7 +212,7 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ColumnStrategy</h4>
-<pre>public&nbsp;ColumnStrategy(<a href="../../com/board/Board.html" title="class in com.board">Board</a>&nbsp;board)</pre>
+<pre>public&nbsp;ColumnStrategy(<a href="../../com/board/Board.html" title="class in com.model.board">Board</a>&nbsp;board)</pre>
 <div class="block">constructor that initial with board game.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -234,12 +234,12 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 <ul class="blockListLast">
 <li class="blockList">
 <h4>execute</h4>
-<pre>public&nbsp;boolean&nbsp;execute(<a href="../../com/player/Location.html" title="class in com.player">Location</a>&nbsp;l,
+<pre>public&nbsp;boolean&nbsp;execute(<a href="../../com/player/Location.html" title="class in com.model.player">Location</a>&nbsp;l,
                        java.lang.String&nbsp;winCondition)</pre>
 <div class="block">Check the column.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../com/strategy/WinStrategy.html#execute-com.player.Location-java.lang.String-">execute</a></code>&nbsp;in class&nbsp;<code><a href="../../com/strategy/WinStrategy.html" title="class in com.strategy">WinStrategy</a></code></dd>
+<dd><code><a href="../../com/strategy/WinStrategy.html#execute-com.player.Location-java.lang.String-">execute</a></code>&nbsp;in class&nbsp;<code><a href="../../com/strategy/WinStrategy.html" title="class in com.model.strategy">WinStrategy</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>l</code> - the position that user insert their character.</dd>
 <dd><code>winCondition</code> - the win condition.</dd>
@@ -277,7 +277,7 @@ extends <a href="../../com/strategy/WinStrategy.html" title="class in com.strate
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../com/strategy/DiagonalStrategy.html" title="class in com.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../com/strategy/DiagonalStrategy.html" title="class in com.model.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?com/strategy/ColumnStrategy.html" target="_top">Frames</a></li>

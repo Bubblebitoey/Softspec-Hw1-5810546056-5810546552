@@ -1,7 +1,7 @@
 package test;
 
 import com.controller.GameBoard;
-import com.player.Location;
+import com.model.player.Location;
 
 import java.io.InputStream;
 import java.util.*;

@@ -1,8 +1,8 @@
-package com.history;
+package com.model.history;
 
-import com.board.Board;
-import com.player.Location;
-import com.player.Player;
+import com.model.board.Board;
+import com.model.player.Location;
+import com.model.player.Player;
 
 import java.util.*;
 
@@ -30,6 +30,10 @@ public class BoardHistory {
 	
 	public List<Triple> getHistory() {
 		return lists;
+	}
+	
+	public void clearAllHistory() {
+		lists.clear();
 	}
 	
 	@Override

@@ -1,10 +1,10 @@
-package com.board;
+package com.model.board;
 
-import com.board.shape.Shape;
-import com.history.BoardHistory;
-import com.player.Location;
-import com.player.Player;
-import com.player.Symbol;
+import com.model.board.shape.Shape;
+import com.model.history.BoardHistory;
+import com.model.player.Location;
+import com.model.player.Player;
+import com.model.player.Symbol;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 /**
- * The board of the game that created by {@link com.board.shape.Shape Shape} class. <br>
+ * The board of the game that created by {@link com.model.board.shape.Shape Shape} class. <br>
  * In the board you can do:
  * <ol>
  * <li>{@link #insert(Player, Location)} - insert some symbol to that position.</li>
@@ -34,7 +34,7 @@ public class Board {
 	 */
 	private int consecutive;
 	
-	private BoardHistory history = BoardHistory.getInstance();
+	private BoardHistory history;
 	private Symbol[][] board;
 	private Shape size;
 	
@@ -66,6 +66,9 @@ public class Board {
 	}
 	
 	public void resetBoard() {
+		history = BoardHistory.getInstance();
+		history.clearAllHistory();
+		
 		// init board
 		for (int i = 0; i < size.getRow(); i++) {
 			for (int j = 0; j < size.getColumn(); j++) {

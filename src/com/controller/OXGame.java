@@ -1,13 +1,14 @@
 package com.controller;
 
-import com.board.Board;
-import com.board.shape.Shape;
-import com.player.Location;
-import com.player.Player;
-import com.player.Symbol;
-import com.strategy.ColumnStrategy;
-import com.strategy.DiagonalStrategy;
-import com.strategy.RowStrategy;
+import com.model.algorithm.WinStrategy;
+import com.model.board.Board;
+import com.model.board.shape.Shape;
+import com.model.player.Location;
+import com.model.player.Player;
+import com.model.player.Symbol;
+import com.model.algorithm.ColumnStrategy;
+import com.model.algorithm.DiagonalStrategy;
+import com.model.algorithm.ConsecutiveStrategy;
 
 /**
  * This class will play the Tic-Tac-Toe game, <br>
@@ -79,7 +80,7 @@ public class OXGame implements GameBoard {
 	
 	/**
 	 * To check that current player win or not. <br>
-	 * This method using Strategy patterns which in the strategy package ({@link com.strategy.WinStrategy}, etc.).
+	 * This method using Strategy patterns which in the strategy package ({@link WinStrategy}, etc.).
 	 *
 	 * @param player
 	 * 		current game player.
@@ -94,7 +95,7 @@ public class OXGame implements GameBoard {
 			winCondition += player.getSymbol();
 		}
 		
-		return new RowStrategy(board).execute(p, winCondition) || new ColumnStrategy(board).execute(p, winCondition) || new DiagonalStrategy(board).execute(p, winCondition);
+		return new ConsecutiveStrategy(board).execute(p, winCondition) || new ColumnStrategy(board).execute(p, winCondition) || new DiagonalStrategy(board).execute(p, winCondition);
 	}
 	
 	@Override
@@ -102,7 +103,7 @@ public class OXGame implements GameBoard {
 		board.resetBoard();
 		
 		winner = -1;
-		currentPlayer = 1;
+		currentPlayer = 0;
 		state = State.PLAYING;
 	}
 	

@@ -1,9 +1,9 @@
 package com.controller;
 
-import com.board.Board;
-import com.board.shape.Shape;
-import com.player.Location;
-import com.player.Player;
+import com.model.board.Board;
+import com.model.board.shape.Shape;
+import com.model.player.Location;
+import com.model.player.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;

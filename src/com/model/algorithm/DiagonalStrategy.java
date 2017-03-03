@@ -1,8 +1,8 @@
-package com.strategy;
+package com.model.algorithm;
 
-import com.board.Board;
-import com.player.Location;
-import com.player.Symbol;
+import com.model.board.Board;
+import com.model.player.Location;
+import com.model.player.Symbol;
 
 /**
  * Check winner by <b>diagonal</b>, <br>

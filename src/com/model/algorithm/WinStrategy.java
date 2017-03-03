@@ -1,7 +1,7 @@
-package com.strategy;
+package com.model.algorithm;
 
-import com.board.Board;
-import com.player.Location;
+import com.model.board.Board;
+import com.model.player.Location;
 
 /**
  * The win condition to win the game board

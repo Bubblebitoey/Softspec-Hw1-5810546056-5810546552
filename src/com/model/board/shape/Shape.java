@@ -1,4 +1,4 @@
-package com.board.shape;
+package com.model.board.shape;
 
 /**
  * This class is for creating board size. <br>

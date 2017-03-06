@@ -41,8 +41,7 @@ public class Player {
 	}
 	
 	/**
-	 * check is same person or not. <br>
-	 * Current doing: Check both Name and Symbol
+	 * Either name or symbol equals will return true.
 	 *
 	 * @param obj
 	 * 		other object to compare.
@@ -53,7 +52,7 @@ public class Player {
 		if (obj == null) return false;
 		if (this.getClass() != obj.getClass()) return false;
 		Player newPlayer = (Player) obj;
-		return this.name.equals(newPlayer.getName()) && this.getSymbol() == newPlayer.getSymbol();
+		return this.name.equals(newPlayer.getName()) || this.getSymbol() == newPlayer.getSymbol();
 	}
 	
 	@Override

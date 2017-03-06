@@ -1,6 +1,7 @@
 package test.subtester;
 
 import com.model.board.Board;
+import com.model.board.shape.Shape;
 import com.model.board.shape.Square;
 import com.controller.GameBoard;
 import com.controller.OXGame;
@@ -33,6 +34,9 @@ public class Game30x30Tester {
 	
 	private GameBoard game = new OXGame(b, p1, p2);
 	
+	// never be negative number
+	public Game30x30Tester() throws Shape.NegativeShapeSize {
+	}
 	
 	private InputStream reader(String fileName) {
 		return Tester.class.getResourceAsStream(folder + "/" + fileName);

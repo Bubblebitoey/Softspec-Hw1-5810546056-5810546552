@@ -1,7 +1,11 @@
 package com.model.player;
 
+import java.util.*;
+import java.util.stream.Stream;
+
 /**
- * The enum that represent the symbol of each player.
+ * The enum that represent the symbol of each player. <br>
+ * <b>Important</b>: to get all symbol in this class please use method {@link #getSymbols()} instant of {@link #values()}.
  *
  * @author bubblebitoey
  * @version 1.1
@@ -22,5 +26,15 @@ public enum Symbol {
 		if (this == EMPTY) return "-";
 		else if (this == WIN) return "[ ]";
 		return name();
+	}
+	
+	/**
+	 * get all symbol but except {@link #EMPTY} and {@link #WIN} symbol
+	 *
+	 * @return all symbol
+	 */
+	public static Symbol[] getSymbols() {
+		Stream<Symbol> stream = Arrays.stream(Symbol.values()).filter(symbol -> symbol != EMPTY && symbol != WIN);
+		return stream.toArray(Symbol[]::new);
 	}
 }

@@ -19,6 +19,7 @@ import com.model.algorithm.ConsecutiveStrategy;
  * @since 2/23/2017 AD.
  */
 public class OXGame implements GameBoard {
+	private static final int MAX_PLAYER = 2;
 	/**
 	 * The game board.
 	 */
@@ -56,6 +57,11 @@ public class OXGame implements GameBoard {
 		winner = -1;
 		currentPlayer = 0;
 		state = State.INIT;
+	}
+	
+	@Override
+	public int getMaximumPlayers() {
+		return MAX_PLAYER;
 	}
 	
 	@Override

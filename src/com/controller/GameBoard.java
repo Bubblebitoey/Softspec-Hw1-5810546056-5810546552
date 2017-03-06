@@ -5,10 +5,7 @@ import com.model.board.shape.Shape;
 import com.model.player.Location;
 import com.model.player.Player;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 
 /**
  * @author kamontat
@@ -30,16 +27,23 @@ public interface GameBoard {
 	}
 	
 	/**
+	 * get maximum player that game can add.
+	 */
+	public int getMaximumPlayers();
+	
+	/**
 	 * Insert location of current player
 	 * To check game's state
+	 *
 	 * @param location
-	 *        This is location of current player
-	 * @return
+	 * 		This is location of current player
+	 * @return true if insertion complete; otherwise, return false.
 	 */
 	public boolean insert(Location location);
 	
 	/**
 	 * Get the current playing player
+	 *
 	 * @return the current player
 	 */
 	public Player currentPlayer();
@@ -55,7 +59,7 @@ public interface GameBoard {
 	public void start();
 	
 	/**
-	 *  The state of game is end
+	 * The state of game is end
 	 */
 	public void end();
 	
@@ -71,18 +75,21 @@ public interface GameBoard {
 	
 	/**
 	 * Get the winner of current game
+	 *
 	 * @return The winner of current game
 	 */
 	public Player getWinner();
 	
 	/**
 	 * Get state of current game
+	 *
 	 * @return State of current game
 	 */
 	public State getGameState();
 	
 	/**
 	 * Get size of game's board
+	 *
 	 * @return Size of game's board
 	 */
 	public Shape getSize();
@@ -93,17 +100,26 @@ public interface GameBoard {
 	public void printBoard();
 	
 	/**
-	 * save board's informations into file
-	 * @param board is Game's board
-	 * @param f is file
+	 * save board's information into file
+	 *
+	 * @param board
+	 * 		is Game's board
+	 * @param f
+	 * 		is file
 	 */
 	default public void save(Board board, File f) {
 		try {
-			PrintWriter printer = new PrintWriter(new FileOutputStream(f));
-			printer.print(board.getHistory().toString());
-			printer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			// try to create file
+			f.getParentFile().mkdir();
+			f.createNewFile();
+			
+			if (f.exists()) {
+				PrintWriter printer = new PrintWriter(new FileOutputStream(f));
+				printer.print(board.getHistory().toString());
+				printer.close();
+			}
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
 		}
 	}
 }

@@ -55,4 +55,11 @@ public class Player {
 		Player newPlayer = (Player) obj;
 		return this.name.equals(newPlayer.getName()) && this.getSymbol() == newPlayer.getSymbol();
 	}
+	
+	@Override
+	public int hashCode() {
+		int result = name.hashCode();
+		result = 31 * result + s.hashCode();
+		return result;
+	}
 }

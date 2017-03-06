@@ -15,7 +15,7 @@ public class Square extends Shape {
 	 * @param size
 	 * 		size of the square.
 	 */
-	private Square(int size) {
+	private Square(int size) throws NegativeShapeSize {
 		super(size, size);
 	}
 	
@@ -34,7 +34,7 @@ public class Square extends Shape {
 	 * 		the size of square
 	 * @return square
 	 */
-	public static Square getSize(int size) {
+	public static Square getSize(int size) throws NegativeShapeSize {
 		return new Square(size);
 	}
 	

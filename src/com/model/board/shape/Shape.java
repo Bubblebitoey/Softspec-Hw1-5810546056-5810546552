@@ -29,9 +29,10 @@ public abstract class Shape {
 	 * @param column
 	 * 		The <b>column</b> or <b>height</b> or <b>x-axis</b>.
 	 */
-	protected Shape(int row, int column) {
+	protected Shape(int row, int column) throws NegativeShapeSize {
 		this.row = row;
 		this.column = column;
+		checkValid(this);
 	}
 	
 	/**
@@ -48,5 +49,16 @@ public abstract class Shape {
 	
 	public int getColumn() {
 		return column;
+	}
+	
+	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
+		if (shape.getRow() > 0 && shape.getColumn() > 0) return shape;
+		throw new NegativeShapeSize();
+	}
+	
+	public static class NegativeShapeSize extends Exception {
+		public NegativeShapeSize() {
+			super("shape can't be negative number.");
+		}
 	}
 }

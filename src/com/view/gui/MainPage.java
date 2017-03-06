@@ -27,7 +27,7 @@ public class MainPage extends JFrame implements Runnable {
 	private GameBoard game;
 	
 	public MainPage(GameBoard game) {
-		super("MainPage");
+		super("Game Page");
 		this.game = game;
 		// update current player name
 		updateCurrentPlayer();
@@ -38,7 +38,6 @@ public class MainPage extends JFrame implements Runnable {
 		createUIComponents();
 		setContentPane(pane);
 	}
-	
 	
 	@Override
 	public void run() {

@@ -17,8 +17,9 @@ import java.util.*;
  * @version 1.2
  * @since 3/2/2017 AD.
  */
-public class MainPage extends JFrame implements Runnable {
-	private static final Dimension DEFAULT_SIZE = new Dimension(350, 350);
+public class MainPage extends JDialog implements Runnable {
+	private static final int BLOCK_SIZE = 20;
+	private final Dimension size;
 	private JPanel pane = new JPanel();
 	private OptionPanel optionPanel = new OptionPanel();
 	private JTable table;
@@ -26,8 +27,14 @@ public class MainPage extends JFrame implements Runnable {
 	
 	private GameBoard game;
 	
-	public MainPage(GameBoard game) {
-		super("Game Page");
+	public MainPage(Window owner, GameBoard game) {
+		super(owner, "Game Page");
+		// set gui size
+		size = new Dimension(game.getSize().getRow() * BLOCK_SIZE, game.getSize().getColumn() * BLOCK_SIZE);
+		
+		setModal(true);
+		setLocation(new Point(owner.getLocation().x + owner.getSize().width, owner.getLocation().y));
+		
 		this.game = game;
 		// update current player name
 		updateCurrentPlayer();
@@ -46,7 +53,7 @@ public class MainPage extends JFrame implements Runnable {
 		pack();
 		setMinimumSize(this.getSize());
 		setVisible(true);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
 	private void createUIComponents() {
@@ -57,11 +64,18 @@ public class MainPage extends JFrame implements Runnable {
 		north.add(nameLb);
 		
 		pane.add(north);
-		pane.add(table);
+		
+		pane.add(new JScrollPane(table));
 		pane.add(optionPanel);
 	}
 	
 	private void initRestartPanel() {
+		optionPanel.add("New Game!", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				restart();
+			}
+		});
 		optionPanel.add("Restart", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -74,7 +88,6 @@ public class MainPage extends JFrame implements Runnable {
 				System.exit(0);
 			}
 		});
-		optionPanel.invisible(this);
 	}
 	
 	private void initTable() {
@@ -93,15 +106,17 @@ public class MainPage extends JFrame implements Runnable {
 		table.setRowSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setTableHeader(null);
+		
 		
 		table.setFont(new Font(null, Font.BOLD, 20));
 		
-		table.setMinimumSize(DEFAULT_SIZE);
-		table.setRowHeight(DEFAULT_SIZE.height / game.getSize().getColumn());
+		table.setMinimumSize(size);
+		table.setRowHeight(size.height / game.getSize().getColumn());
 		Enumeration<TableColumn> columns = table.getColumnModel().getColumns();
 		while (columns.hasMoreElements()) {
 			TableColumn c = columns.nextElement();
-			c.setPreferredWidth(DEFAULT_SIZE.width / game.getSize().getRow());
+			c.setPreferredWidth(size.width / game.getSize().getRow());
 		}
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -152,15 +167,7 @@ public class MainPage extends JFrame implements Runnable {
 		}
 		
 		if (game.getGameState() != GameBoard.State.PLAYING && game.getGameState() != GameBoard.State.END) {
-			optionPanel.visible(this);
-			// south.setVisible(true);
-			//			int result = JOptionPane.showConfirmDialog(this, "Do you want to play again?", "Message", JOptionPane.YES_NO_OPTION);
-			//			if (result == JOptionPane.YES_OPTION) {
-			//				game.restart();
-			//				removeAll(table);
-			//			} else {
-			//				game.end();
-			//			}
+			// TODO 3/6/2017 AD 10:56 PM do some thing when game end.
 		}
 	}
 	
@@ -168,6 +175,10 @@ public class MainPage extends JFrame implements Runnable {
 		game.restart();
 		removeAll(table);
 		updateCurrentPlayer();
-		optionPanel.invisible(this);
 	}
+	
+	private void newGame() {
+		dispose();
+	}
+	
 }

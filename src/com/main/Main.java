@@ -2,6 +2,8 @@ package com.main;
 
 import com.view.gui.SettingPage;
 
+import javax.swing.*;
+
 /**
  * Main class
  *
@@ -17,20 +19,19 @@ public class Main {
 	 * 		no used
 	 */
 	public static void main(String[] args) {
+		
+		// console version
 		// game creator for console version only
 		// Board b = new Board(Square.getDefaultSize());
 		// Player p1 = new Player("p1", Symbol.O);
 		// Player p2 = new Player("p2", Symbol.X);
 		// GameBoard game = new OXGame(b, p1, p2);
-		
-		// console version
 		// Runnable runnable = new Console(Console.DEFAULT_INPUT_STREAM, game);
 		
 		// gui version
 		Runnable runnable = new SettingPage();
 		
-		// run code
-		runnable.run();
+		SwingUtilities.invokeLater(runnable);
 		
 		// for save to result to file
 		// game.save(b, new File("src/test/testfile/temp/finish_game_random_number.txt"));

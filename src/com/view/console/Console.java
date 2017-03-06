@@ -12,10 +12,11 @@ import java.util.*;
  * @since 3/2/2017 AD.
  */
 public class Console implements Runnable {
+	
 	public static final InputStream DEFAULT_INPUT_STREAM = System.in;
 	
-	private Scanner input;
 	private GameBoard game;
+	private Scanner input;
 	
 	public Console(InputStream inputStream, GameBoard game) {
 		input = new Scanner(inputStream);

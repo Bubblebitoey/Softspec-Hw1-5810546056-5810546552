@@ -1,12 +1,6 @@
 package com.main;
 
-import com.model.board.Board;
-import com.model.board.shape.Square;
-import com.view.gui.MainPage;
-import com.controller.GameBoard;
-import com.controller.OXGame;
-import com.model.player.Player;
-import com.model.player.Symbol;
+import com.view.gui.SettingPage;
 
 /**
  * Main class
@@ -23,20 +17,19 @@ public class Main {
 	 * 		no used
 	 */
 	public static void main(String[] args) {
-		Board b = new Board(Square.getDefaultSize());
-		
-		Player p1 = new Player("p1", Symbol.O);
-		Player p2 = new Player("p2", Symbol.X);
-		
-		GameBoard game = new OXGame(b, p1, p2);
+		// game creator for console version only
+		// Board b = new Board(Square.getDefaultSize());
+		// Player p1 = new Player("p1", Symbol.O);
+		// Player p2 = new Player("p2", Symbol.X);
+		// GameBoard game = new OXGame(b, p1, p2);
 		
 		// console version
 		// Runnable runnable = new Console(Console.DEFAULT_INPUT_STREAM, game);
 		
 		// gui version
-		Runnable runnable = new MainPage(game);
+		Runnable runnable = new SettingPage();
 		
-		
+		// run code
 		runnable.run();
 		
 		// for save to result to file

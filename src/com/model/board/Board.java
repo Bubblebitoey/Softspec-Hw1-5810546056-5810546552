@@ -60,7 +60,7 @@ public class Board {
 	public Board(Shape s, int winCondition) {
 		size = s;
 		board = new Symbol[size.getRow()][size.getColumn()];
-		this.consecutive = winCondition > size.getRow() ? winCondition > size.getColumn() ? Math.max(size.getRow(), size.getColumn()): winCondition: winCondition;
+		this.consecutive = winCondition > size.getRow() || winCondition < 1 ? winCondition > size.getColumn() || winCondition < 1 ? Math.max(size.getRow(), size.getColumn()): winCondition: winCondition;
 		
 		resetBoard();
 	}

@@ -73,7 +73,7 @@ public class MainPage extends JDialog implements Runnable {
 		optionPanel.add("New Game!", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				restart();
+				newGame();
 			}
 		});
 		optionPanel.add("Restart", new AbstractAction() {
@@ -180,5 +180,4 @@ public class MainPage extends JDialog implements Runnable {
 	private void newGame() {
 		dispose();
 	}
-	
 }

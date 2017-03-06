@@ -16,7 +16,7 @@ public class ColumnStrategy extends WinStrategy {
 	 * constructor that initial with board game.
 	 *
 	 * @param board
-	 * 		the game board.
+	 * 		the game's board.
 	 */
 	public ColumnStrategy(Board board) {
 		super(board);

@@ -29,28 +29,74 @@ public interface GameBoard {
 		INIT, PLAYING, END, WIN, DRAW, ERROR;
 	}
 	
+	/**
+	 * Insert location of current player
+	 * To check game's state
+	 * @param location
+	 *        This is location of current player
+	 * @return
+	 */
 	public boolean insert(Location location);
 	
+	/**
+	 * Get the current playing player
+	 * @return the current player
+	 */
 	public Player currentPlayer();
 	
+	/**
+	 * Switch player to next player
+	 */
 	public void nextPlayer();
 	
+	/**
+	 * The state of game is playing
+	 */
 	public void start();
 	
+	/**
+	 *  The state of game is end
+	 */
 	public void end();
 	
+	/**
+	 * When have error occured. This method will call
+	 */
 	public void fail();
 	
+	/**
+	 * Restart the game by reset game's board and reset player
+	 */
 	public void restart();
 	
+	/**
+	 * Get the winner of current game
+	 * @return The winner of current game
+	 */
 	public Player getWinner();
 	
+	/**
+	 * Get state of current game
+	 * @return State of current game
+	 */
 	public State getGameState();
 	
+	/**
+	 * Get size of game's board
+	 * @return Size of game's board
+	 */
 	public Shape getSize();
 	
+	/**
+	 * To print game's board in console
+	 */
 	public void printBoard();
 	
+	/**
+	 * save board's informations into file
+	 * @param board is Game's board
+	 * @param f is file
+	 */
 	default public void save(Board board, File f) {
 		try {
 			PrintWriter printer = new PrintWriter(new FileOutputStream(f));

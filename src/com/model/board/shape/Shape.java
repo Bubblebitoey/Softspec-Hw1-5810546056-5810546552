@@ -27,6 +27,8 @@ public abstract class Shape extends Dimension {
 	 * 		The <b>column</b> or <b>width</b> or <b>x-axis</b>.
 	 * @param height
 	 * 		The <b>row</b> or <b>height</b> or <b>y-axis</b>.
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
 	 */
 	protected Shape(int width, int height) throws NegativeShapeException {
 		super(width, height);
@@ -45,11 +47,23 @@ public abstract class Shape extends Dimension {
 		return super.toString();
 	}
 	
+	/**
+	 * throw exception if shape in invalid.
+	 *
+	 * @param shape
+	 * 		testing shape
+	 * @return valid shape
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
+	 */
 	public static Shape checkValid(Shape shape) throws NegativeShapeException {
 		if (shape.height > 0 && shape.width > 0) return shape;
 		throw new NegativeShapeException();
 	}
 	
+	/**
+	 * if Shape in negative number
+	 */
 	public static class NegativeShapeException extends Exception {
 		public NegativeShapeException() {
 			super("size can't be negative number.");

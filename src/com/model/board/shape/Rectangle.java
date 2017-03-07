@@ -16,6 +16,8 @@ public class Rectangle extends Shape {
 	 * 		row(y-axis) of the rectangle.
 	 * @param column
 	 * 		column(x-axis) of the rectangle.
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
 	 */
 	private Rectangle(int row, int column) throws NegativeShapeException {
 		super(row, column);
@@ -23,7 +25,7 @@ public class Rectangle extends Shape {
 	
 	/**
 	 * The private constructor that call {@link Shape#Shape()} constructor. <br>
-	 * this will create with {@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
+	 * This will create with {@link Shape#Shape()}
 	 */
 	private Rectangle() {
 		super();
@@ -37,18 +39,15 @@ public class Rectangle extends Shape {
 	 * @param column
 	 * 		column(x-axis) of the rectangle.
 	 * @return square
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
 	 */
 	public static Rectangle getSize(int row, int column) throws NegativeShapeException {
 		return new Rectangle(row, column);
 	}
 	
 	/**
-	 * use:
-	 * <ul>
-	 * <li>{@link #DEFAULT_ROW default_row}={@value DEFAULT_ROW}</li>
-	 * <li>{@link #DEFAULT_COLUMN default_column}={@value DEFAULT_COLUMN}</li>
-	 * </ul>
-	 * To create the rectangle.
+	 * this will create with {@link Shape#Shape()}
 	 *
 	 * @return Rectangle with default size.
 	 */

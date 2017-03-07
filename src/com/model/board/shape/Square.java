@@ -14,6 +14,8 @@ public class Square extends Shape {
 	 *
 	 * @param size
 	 * 		size of the square.
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
 	 */
 	private Square(int size) throws NegativeShapeException {
 		super(size, size);
@@ -21,7 +23,7 @@ public class Square extends Shape {
 	
 	/**
 	 * The private constructor that call {@link Shape#Shape()} constructor. <br>
-	 * this will create with{@link #DEFAULT_ROW} and {@link #DEFAULT_COLUMN}.
+	 * this will create with {@link Shape#Shape()}
 	 */
 	private Square() {
 		super();
@@ -33,18 +35,15 @@ public class Square extends Shape {
 	 * @param size
 	 * 		the size of square
 	 * @return square
+	 * @throws com.model.board.shape.Shape.NegativeShapeException
+	 * 		if input negative number.
 	 */
 	public static Square getSize(int size) throws NegativeShapeException {
 		return new Square(size);
 	}
 	
 	/**
-	 * use:
-	 * <ul>
-	 * <li>{@link #DEFAULT_ROW default_row}={@value DEFAULT_ROW}</li>
-	 * <li>{@link #DEFAULT_COLUMN default_column}={@value DEFAULT_COLUMN}</li>
-	 * </ul>
-	 * To create the square.
+	 * this will create with {@link Shape#Shape()}
 	 *
 	 * @return Square with default size.
 	 */

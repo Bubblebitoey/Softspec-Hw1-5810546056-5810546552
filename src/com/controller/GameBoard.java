@@ -28,6 +28,8 @@ public interface GameBoard {
 	
 	/**
 	 * get maximum player that game can add.
+	 *
+	 * @return maximum player that can player this class
 	 */
 	public int getMaximumPlayers();
 	

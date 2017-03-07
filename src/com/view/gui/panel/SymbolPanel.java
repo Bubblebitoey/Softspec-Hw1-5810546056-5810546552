@@ -25,7 +25,7 @@ public class SymbolPanel extends JPanel {
 	/**
 	 * get current selected symbol
 	 *
-	 * @return
+	 * @return selected symbol
 	 */
 	public Symbol getSelected() {
 		return (Symbol) comboBox.getSelectedItem();

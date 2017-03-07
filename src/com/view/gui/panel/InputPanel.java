@@ -101,6 +101,10 @@ public class InputPanel extends JPanel {
 	 *
 	 * @param key
 	 * 		the key (label)
+	 * @param aClass
+	 * 		cast class
+	 * @param <T>
+	 * 		output class
 	 * @return T class that input or null
 	 */
 	public <T extends JComponent> T getComponent(String key, Class<T> aClass) {

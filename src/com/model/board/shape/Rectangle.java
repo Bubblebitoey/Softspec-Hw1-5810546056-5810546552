@@ -17,7 +17,7 @@ public class Rectangle extends Shape {
 	 * @param column
 	 * 		column(x-axis) of the rectangle.
 	 */
-	private Rectangle(int row, int column) throws NegativeShapeSize {
+	private Rectangle(int row, int column) throws NegativeShapeException {
 		super(row, column);
 	}
 	
@@ -38,7 +38,7 @@ public class Rectangle extends Shape {
 	 * 		column(x-axis) of the rectangle.
 	 * @return square
 	 */
-	public static Rectangle getSize(int row, int column) throws NegativeShapeSize {
+	public static Rectangle getSize(int row, int column) throws NegativeShapeException {
 		return new Rectangle(row, column);
 	}
 	

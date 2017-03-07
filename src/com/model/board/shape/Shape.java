@@ -28,7 +28,7 @@ public abstract class Shape extends Dimension {
 	 * @param height
 	 * 		The <b>row</b> or <b>height</b> or <b>y-axis</b>.
 	 */
-	protected Shape(int width, int height) throws NegativeShapeSize {
+	protected Shape(int width, int height) throws NegativeShapeException {
 		super(width, height);
 		checkValid(this);
 	}
@@ -45,14 +45,14 @@ public abstract class Shape extends Dimension {
 		return super.toString();
 	}
 	
-	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
+	public static Shape checkValid(Shape shape) throws NegativeShapeException {
 		if (shape.height > 0 && shape.width > 0) return shape;
-		throw new NegativeShapeSize();
+		throw new NegativeShapeException();
 	}
 	
-	public static class NegativeShapeSize extends Exception {
-		public NegativeShapeSize() {
-			super("shape can't be negative number.");
+	public static class NegativeShapeException extends Exception {
+		public NegativeShapeException() {
+			super("size can't be negative number.");
 		}
 	}
 }

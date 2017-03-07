@@ -35,7 +35,7 @@ public class Game30x30Tester {
 	private GameBoard game = new OXGame(b, p1, p2);
 	
 	// never be negative number
-	public Game30x30Tester() throws Shape.NegativeShapeSize {
+	public Game30x30Tester() throws Shape.NegativeShapeException {
 	}
 	
 	private InputStream reader(String fileName) {

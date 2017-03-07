@@ -1,5 +1,7 @@
 package com.model.board.shape;
 
+import java.awt.*;
+
 /**
  * This class is for creating board size. <br>
  * Here We implement 2 sub class that you can use to create the board. <br>
@@ -8,56 +10,43 @@ package com.model.board.shape;
  * <li>{@link Rectangle} - This class will create the rectangle size which is row and column not necessary to be equal.</li>
  * </ol>
  * <p>
- * Important: The Default of Row and Column, you can find in {@link #DEFAULT_ROW row} and {@link #DEFAULT_COLUMN column}.
+ * Important: The Default of Row/Height and Column/Width, you can find in {@link #DEFAULT_HEIGHT} and {@link #DEFAULT_WIDTH}.
  *
  * @author kamontat
- * @version 1.1
+ * @version 1.2
  * @since Fri 24/Feb/2017 - 11:56 PM
  */
-public abstract class Shape {
-	private static final int DEFAULT_ROW = 9;
-	private static final int DEFAULT_COLUMN = 9;
-	
-	private final int row;
-	private final int column;
+public abstract class Shape extends Dimension {
+	private static final int DEFAULT_HEIGHT = 9;
+	private static final int DEFAULT_WIDTH = 9;
 	
 	/**
 	 * create the shape with any size by parameters.
 	 *
-	 * @param row
-	 * 		The <b>row</b> or <b>width</b> or <b>y-axis</b>.
-	 * @param column
-	 * 		The <b>column</b> or <b>height</b> or <b>x-axis</b>.
+	 * @param width
+	 * 		The <b>column</b> or <b>width</b> or <b>x-axis</b>.
+	 * @param height
+	 * 		The <b>row</b> or <b>height</b> or <b>y-axis</b>.
 	 */
-	protected Shape(int row, int column) throws NegativeShapeSize {
-		this.row = row;
-		this.column = column;
+	protected Shape(int width, int height) throws NegativeShapeSize {
+		super(width, height);
 		checkValid(this);
 	}
 	
 	/**
-	 * create shape with default size ({@link #DEFAULT_ROW row}, {@link #DEFAULT_COLUMN column}).
+	 * create shape with default size ({@link #DEFAULT_WIDTH}, {@link #DEFAULT_HEIGHT}).
 	 */
 	Shape() {
-		this.row = DEFAULT_ROW;
-		this.column = DEFAULT_COLUMN;
-	}
-	
-	public int getRow() {
-		return row;
-	}
-	
-	public int getColumn() {
-		return column;
+		super(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 	
 	@Override
 	public String toString() {
-		return "Shape(" + row + ", " + column + ')';
+		return super.toString();
 	}
 	
 	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
-		if (shape.getRow() > 0 && shape.getColumn() > 0) return shape;
+		if (shape.getHeight() > 0 && shape.getWidth() > 0) return shape;
 		throw new NegativeShapeSize();
 	}
 	

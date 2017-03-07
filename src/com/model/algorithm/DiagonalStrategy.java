@@ -58,7 +58,7 @@ public class DiagonalStrategy extends WinStrategy {
 	private Location toRightMinimum(Location l) {
 		Location newPos = l.clone();
 		
-		while (newPos.row > 0 && newPos.col < board.getSize().getColumn() - 1) {
+		while (newPos.row > 0 && newPos.col < board.getSize().getW() - 1) {
 			newPos.setRow(newPos.row - 1);
 			newPos.setCol(newPos.col + 1);
 		}

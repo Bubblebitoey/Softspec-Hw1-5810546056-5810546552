@@ -10,10 +10,10 @@ import java.awt.*;
  * <li>{@link Rectangle} - This class will create the rectangle size which is row and column not necessary to be equal.</li>
  * </ol>
  * <p>
- * Important: The Default of Row/Height and Column/Width, you can find in {@link #DEFAULT_HEIGHT} and {@link #DEFAULT_WIDTH}.
+ * Important: The Default of Row and Column, you can find in {@link #DEFAULT_HEIGHT} and {@link #DEFAULT_WIDTH}.
  *
  * @author kamontat
- * @version 1.2
+ * @version 1.1
  * @since Fri 24/Feb/2017 - 11:56 PM
  */
 public abstract class Shape extends Dimension {
@@ -34,10 +34,28 @@ public abstract class Shape extends Dimension {
 	}
 	
 	/**
-	 * create shape with default size ({@link #DEFAULT_WIDTH}, {@link #DEFAULT_HEIGHT}).
+	 * create shape with default size ({@link #DEFAULT_WIDTH row/height}, {@link #DEFAULT_HEIGHT column/width}).
 	 */
 	Shape() {
 		super(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	}
+	
+	/**
+	 * get height in {@link Integer} format.
+	 *
+	 * @return height/row.
+	 */
+	public int getH() {
+		return height;
+	}
+	
+	/**
+	 * get width in {@link Integer} format.
+	 *
+	 * @return width/column.
+	 */
+	public int getW() {
+		return width;
 	}
 	
 	@Override
@@ -46,7 +64,7 @@ public abstract class Shape extends Dimension {
 	}
 	
 	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
-		if (shape.getHeight() > 0 && shape.getWidth() > 0) return shape;
+		if (shape.getH() > 0 && shape.getW() > 0) return shape;
 		throw new NegativeShapeSize();
 	}
 	

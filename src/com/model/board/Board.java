@@ -25,12 +25,12 @@ import java.io.PrintWriter;
  */
 public class Board {
 	/**
-	 * default the player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getRow() wins the game.
+	 * default the player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getH() wins the game.
 	 */
 	private static final int DEFAULT_WIN_CONDITION = 5;
 	
 	/**
-	 * the win condition player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getRow() wins the game.
+	 * the win condition player who succeeds in placing consecutive of their character in a horizontal, vertical, or diagonal size.getH() wins the game.
 	 */
 	private int consecutive;
 	
@@ -55,12 +55,12 @@ public class Board {
 	 * @param s
 	 * 		The board shape or the board size.
 	 * @param winCondition
-	 * 		the win condition (how many consecutive characters in a horizontal, vertical, or diagonal size.getRow()).
+	 * 		the win condition (how many consecutive characters in a horizontal, vertical, or diagonal size.getH()).
 	 */
 	public Board(Shape s, int winCondition) {
 		size = s;
-		board = new Symbol[size.getRow()][size.getColumn()];
-		this.consecutive = winCondition > size.getRow() || winCondition < 1 ? winCondition > size.getColumn() || winCondition < 1 ? Math.max(size.getRow(), size.getColumn()): winCondition: winCondition;
+		board = new Symbol[size.getH()][size.getW()];
+		this.consecutive = winCondition > size.getH() || winCondition < 1 ? winCondition > size.getW() || winCondition < 1 ? Math.max(size.getH(), size.getW()): winCondition: winCondition;
 		
 		resetBoard();
 	}
@@ -70,8 +70,8 @@ public class Board {
 		history.clearAllHistory();
 		
 		// init board
-		for (int i = 0; i < size.getRow(); i++) {
-			for (int j = 0; j < size.getColumn(); j++) {
+		for (int i = 0; i < size.getH(); i++) {
+			for (int j = 0; j < size.getW(); j++) {
 				board[i][j] = Symbol.EMPTY;
 			}
 		}
@@ -167,7 +167,7 @@ public class Board {
 	 * @return true if in board size; otherwise, return false.
 	 */
 	public boolean isValid(Location p) {
-		return p != null && p.row >= 0 && p.row < size.getRow() && p.col >= 0 && p.col < size.getColumn();
+		return p != null && p.row >= 0 && p.row < size.getH() && p.col >= 0 && p.col < size.getW();
 	}
 	
 	/**
@@ -210,7 +210,7 @@ public class Board {
 	@Override
 	public String toString() {
 		String output = " 0 ";
-		for (int i = 1; i <= size.getColumn(); i++) {
+		for (int i = 1; i <= size.getW(); i++) {
 			output += String.format("%2d%1s", i, "");
 		}
 		output += "\n";

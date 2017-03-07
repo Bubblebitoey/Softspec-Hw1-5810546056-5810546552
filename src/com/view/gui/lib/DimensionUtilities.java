@@ -20,7 +20,7 @@ public class DimensionUtilities {
 	
 	/**
 	 * Screen information <br>
-	 * - get size <code>screen.getWidth</code> and <code>screen.getHeight</code>
+	 * - get size <code>screen.getW</code> and <code>screen.getH</code>
 	 */
 	private static DisplayMode screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
 	
@@ -76,19 +76,23 @@ public class DimensionUtilities {
 	 * @return result of 2 <code>a</code> and <code>b</code> do {@link Operation}.
 	 */
 	public static Dimension operation(Dimension a, Dimension b, Operation op) {
-		Dimension result = new Dimension(a);
+		Dimension result = new Dimension();
 		switch (op) {
 			case ADD:
-				result.setSize(result.width + b.width, result.height + b.height);
+				result.height = a.height + b.height;
+				result.width = a.width + b.width;
 				break;
 			case MINUS:
-				result.setSize(result.width - b.width, result.height - b.height);
+				result.height = a.height - b.height;
+				result.width = a.width - b.width;
 				break;
 			case MULTIPLY:
-				result.setSize(result.width * b.width, result.height * b.height);
+				result.height = a.height * b.height;
+				result.width = a.width * b.width;
 				break;
 			case DIVIDE:
-				result.setSize(result.width / b.width, result.height / b.height);
+				result.height = a.height / b.height;
+				result.width = a.width / b.width;
 				break;
 		}
 		return result;

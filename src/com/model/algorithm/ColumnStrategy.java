@@ -33,7 +33,7 @@ public class ColumnStrategy extends WinStrategy {
 	 */
 	@Override
 	public boolean execute(Location l, String winCondition) {
-		Location newPos = l.clone();
+		Location newPos = (Location) l.clone();
 		String compareCond = "";
 		for (int i = 0; i < board.getSize().height; i++) {
 			newPos.setRow(i);

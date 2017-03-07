@@ -51,6 +51,11 @@ public abstract class Shape {
 		return column;
 	}
 	
+	@Override
+	public String toString() {
+		return "Shape(" + row + ", " + column + ')';
+	}
+	
 	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
 		if (shape.getRow() > 0 && shape.getColumn() > 0) return shape;
 		throw new NegativeShapeSize();

@@ -20,7 +20,7 @@ public class Rectangle extends Shape {
 	 * 		if input negative number.
 	 */
 	private Rectangle(int row, int column) throws NegativeShapeException {
-		super(row, column);
+		super(column, row);
 	}
 	
 	/**

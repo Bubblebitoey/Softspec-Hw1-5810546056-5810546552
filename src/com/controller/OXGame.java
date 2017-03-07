@@ -10,6 +10,8 @@ import com.model.algorithm.ColumnStrategy;
 import com.model.algorithm.DiagonalStrategy;
 import com.model.algorithm.ConsecutiveStrategy;
 
+import java.util.*;
+
 /**
  * This class will play the Tic-Tac-Toe game, <br>
  * You can play by using {@link OXGame#OXGame(Board, Player...)} - this will allow you to play the game in console.
@@ -43,7 +45,8 @@ public class OXGame implements GameBoard {
 	
 	/**
 	 * use default input stream to play the game that allow you to play the game in console such as <code>terminal</code> or <code>compiler</code> <br>
-	 * To setting the game you must have <b>The board</b> and <b>The player</b>.
+	 * To setting the game you must have <b>The board</b> and <b>The player</b>. <br>
+	 * and the players should less than {@link #getMaximumPlayers()}, but if is not this method will remove other player that more than maximum player.
 	 *
 	 * @param board
 	 * 		This is the game's board.
@@ -52,10 +55,10 @@ public class OXGame implements GameBoard {
 	 */
 	public OXGame(Board board, Player... players) {
 		this.board = board;
-		this.players = players;
+		this.players = Arrays.stream(players).limit(getMaximumPlayers()).toArray(Player[]::new);
 		
 		winner = -1;
-		currentPlayer = 0;
+		currentPlayer = randomFirstPlayer();
 		state = State.INIT;
 	}
 	
@@ -109,7 +112,7 @@ public class OXGame implements GameBoard {
 		board.resetBoard();
 		
 		winner = -1;
-		currentPlayer = 0;
+		currentPlayer = randomFirstPlayer();
 		state = State.PLAYING;
 	}
 	

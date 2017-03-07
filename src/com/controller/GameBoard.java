@@ -122,4 +122,13 @@ public interface GameBoard {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	/**
+	 * random first player.
+	 *
+	 * @return index of first player.
+	 */
+	default public int randomFirstPlayer() {
+		return (int) Math.floor(Math.random() * getMaximumPlayers());
+	}
 }

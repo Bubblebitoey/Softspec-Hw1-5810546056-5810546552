@@ -75,7 +75,7 @@ public class DimensionUtilities {
 	 * 		is arithmetic Operation.
 	 * @return result of 2 <code>a</code> and <code>b</code> do {@link Operation}.
 	 */
-	public static Dimension operation(Dimension a, Dimension b, Operation op) {
+	public static Dimension operation(Dimension a, Operation op, Dimension b) {
 		Dimension result = new Dimension();
 		switch (op) {
 			case ADD:
@@ -96,5 +96,22 @@ public class DimensionUtilities {
 				break;
 		}
 		return result;
+	}
+	
+	/**
+	 * operate a with integer <code>b</code> <br>
+	 * The method will change integer to to dimension with width and height is b and run method {@link #operation(Dimension, Operation, Dimension)}
+	 *
+	 * @param a
+	 * 		dimension
+	 * @param op
+	 * 		operation
+	 * @param b
+	 * 		integer
+	 * @return {@link #operation(Dimension, Operation, Dimension)}
+	 */
+	public static Dimension operation(Dimension a, Operation op, int b) {
+		Dimension bd = new Dimension(b, b);
+		return operation(a, op, bd);
 	}
 }

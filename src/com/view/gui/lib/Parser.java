@@ -39,6 +39,8 @@ public class Parser {
 	 * @return number of input in <code>{@link Class}</code> class, or null if cannot parse to <code>Class</code>.
 	 */
 	public <T extends Number> T parseTo(String input, Class<T> tClass) {
+		// set default error to complete.
+		errorMessage = COMPLETE;
 		try {
 			return parse(input, tClass);
 		} catch (Exception e) {

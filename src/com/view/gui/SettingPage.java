@@ -7,9 +7,11 @@ import com.model.board.shape.Shape;
 import com.model.implementation.Pair;
 import com.model.player.Player;
 import com.model.player.Symbol;
+import com.view.gui.lib.Display;
 import com.view.gui.lib.Parser;
 import com.view.gui.panel.InputPanel;
 import com.view.gui.panel.SymbolPanel;
+import com.view.gui.popup.ErrorMessage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,6 +42,7 @@ public class SettingPage extends JFrame implements Runnable {
 	@Override
 	public void run() {
 		pack();
+		setLocation(Display.getCenterLocation(this.getSize()));
 		setMinimumSize(this.getSize());
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -64,20 +67,33 @@ public class SettingPage extends JFrame implements Runnable {
 		b.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Integer r = Parser.getParsable().parseTo(boardSetting.getComponent(row, JTextField.class).getText(), Integer.class);
-				Integer c = Parser.getParsable().parseTo(boardSetting.getComponent(col, JTextField.class).getText(), Integer.class);
-				Integer con = Parser.getParsable().parseTo(boardSetting.getComponent(consecutive, JTextField.class).getText(), Integer.class);
+				Parser p = Parser.getParsable();
 				
-				if (r == null || c == null) {
-					JOptionPane.showMessageDialog(null, "row and column are unacceptable.", "Error", JOptionPane.ERROR_MESSAGE);
+				Integer r = p.parseTo(boardSetting.getComponent(row, JTextField.class).getText(), Integer.class);
+				if (p.isError()) {
+					ErrorMessage.get(p.getError());
 					return;
+				}
+				
+				Integer c = p.parseTo(boardSetting.getComponent(col, JTextField.class).getText(), Integer.class);
+				if (p.isError()) {
+					ErrorMessage.get(p.getError());
+					return;
+				}
+				
+				Integer con = p.parseTo(boardSetting.getComponent(consecutive, JTextField.class).getText(), Integer.class);
+				if (p.isError()) {
+					ErrorMessage.get(p.getError());
+					con = 5;
 				}
 				
 				Board b;
 				try {
-					b = new Board(com.model.board.shape.Rectangle.getSize(r, c), con == null ? 5: con);
-				} catch (Shape.NegativeShapeSize negativeShapeSize) {
-					JOptionPane.showMessageDialog(null, "row and column cannot be negative.", "Error", JOptionPane.ERROR_MESSAGE);
+					b = new Board(com.model.board.shape.Rectangle.getSize(r, c), con);
+					// update to valid consecutive
+					boardSetting.getComponent(consecutive, JTextField.class).setText(String.valueOf(b.getConsecutive()));
+				} catch (Shape.NegativeShapeException ne) {
+					ErrorMessage.get(ne.getMessage());
 					return;
 				}
 				
@@ -89,8 +105,14 @@ public class SettingPage extends JFrame implements Runnable {
 				pSymbol = player2Setting.getComponent(symbol, SymbolPanel.class).getSelected();
 				Player p2 = new Player(pName, pSymbol);
 				
-				if (p1.equals(p2)) {
-					JOptionPane.showMessageDialog(null, "Both name and Symbol should unique.", "Error", JOptionPane.ERROR_MESSAGE);
+				if (p1.getName().equals(p2.getName()) && p1.getSymbol() == p2.getSymbol()) {
+					ErrorMessage.get("Both name and symbol should unique.");
+					return;
+				} else if (p1.getName().equals(p2.getName())) {
+					ErrorMessage.get("The player name should unique.");
+					return;
+				} else if (p1.getSymbol() == p2.getSymbol()) {
+					ErrorMessage.get("The player symbol should unique.");
 					return;
 				}
 				

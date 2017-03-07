@@ -19,8 +19,7 @@ import java.util.*;
  * @since 3/2/2017 AD.
  */
 public class MainPage extends JDialog implements Runnable {
-	private static final int BLOCK_SIZE = 20;
-	private final Dimension size;
+	private static final int BLOCK_SIZE = 25;
 	private JPanel pane = new JPanel();
 	private OptionPanel optionPanel = new OptionPanel();
 	private JTable table;
@@ -30,8 +29,6 @@ public class MainPage extends JDialog implements Runnable {
 	
 	public MainPage(Window owner, GameBoard game) {
 		super(owner, "Game Page");
-		// set gui size
-		size = new Dimension(game.getSize().height * BLOCK_SIZE, game.getSize().width * BLOCK_SIZE);
 		
 		setModal(true);
 		setLocation(new Point(owner.getLocation().x + owner.getSize().width, owner.getLocation().y));
@@ -62,6 +59,8 @@ public class MainPage extends JDialog implements Runnable {
 		
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north, BoxLayout.LINE_AXIS));
+		
+		nameLb.setFont(new Font("", Font.BOLD, 21));
 		north.add(nameLb);
 		
 		pane.add(north);
@@ -112,17 +111,17 @@ public class MainPage extends JDialog implements Runnable {
 		
 		table.setFont(new Font(null, Font.BOLD, 20));
 		
-		Dimension d = DimensionUtilities.operation(size, game.getSize(), DimensionUtilities.Operation.DIVIDE);
-		Dimension pd = DimensionUtilities.operation(table.getPreferredScrollableViewportSize(), game.getSize(), DimensionUtilities.Operation.DIVIDE);
+		Dimension gameSize = new Dimension(BLOCK_SIZE, BLOCK_SIZE);
 		
-		Dimension size = DimensionUtilities.maximum(d, pd);
+		Dimension tablePreferredSize = DimensionUtilities.operation(table.getPreferredScrollableViewportSize(), DimensionUtilities.Operation.DIVIDE, game.getSize());
 		
-		table.setMinimumSize(size);
-		table.setRowHeight(size.height);
+		Dimension preferredSize = DimensionUtilities.maximum(gameSize, tablePreferredSize);
+		
+		table.setRowHeight(preferredSize.height);
 		Enumeration<TableColumn> columns = table.getColumnModel().getColumns();
 		while (columns.hasMoreElements()) {
 			TableColumn c = columns.nextElement();
-			c.setPreferredWidth(size.width);
+			c.setPreferredWidth(preferredSize.width);
 		}
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -167,8 +166,10 @@ public class MainPage extends JDialog implements Runnable {
 		String message = "";
 		
 		if (game.getGameState() == GameBoard.State.DRAW) {
+			nameLb.setForeground(Color.BLUE);
 			nameLb.setText("Draw!");
 		} else if (game.getGameState() == GameBoard.State.WIN) {
+			nameLb.setForeground(Color.RED);
 			nameLb.setText("Winner player: " + game.getWinner());
 		}
 		
@@ -181,9 +182,11 @@ public class MainPage extends JDialog implements Runnable {
 		game.restart();
 		removeAll(table);
 		updateCurrentPlayer();
+		nameLb.setForeground(Color.BLACK);
 	}
 	
 	private void newGame() {
+		nameLb.setForeground(Color.BLACK);
 		dispose();
 	}
 }

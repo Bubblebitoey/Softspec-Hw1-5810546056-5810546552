@@ -15,7 +15,7 @@ public enum Symbol {
 	/**
 	 * this is the <b>empty</b> symbol which nothing inside the location
 	 */
-	EMPTY, WIN, X, O;
+	EMPTY, WIN, X, O, A, Z, B, F, U, C, K;
 	
 	/**
 	 * if the symbol is {@link #EMPTY} this method will return "-"; otherwise, return the string of variable (like <code>O</code> or <code>X</code>)

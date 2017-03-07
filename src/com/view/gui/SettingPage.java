@@ -83,7 +83,7 @@ public class SettingPage extends JFrame implements Runnable {
 				
 				Integer con = p.parseTo(boardSetting.getComponent(consecutive, JTextField.class).getText(), Integer.class);
 				if (p.isError()) {
-					ErrorMessage.get(p.getError());
+					ErrorMessage.get("consecutive be defaults (5)");
 					con = 5;
 				}
 				

@@ -8,6 +8,12 @@ import java.awt.*;
 import java.util.*;
 
 /**
+ * input form panel.
+ * <p>
+ * HEADER
+ * |string|component|
+ * |string|component|
+ *
  * @author kamontat
  * @version 1.0
  * @since Mon 06/Mar/2017 - 6:52 PM
@@ -16,6 +22,8 @@ public class InputPanel extends JPanel {
 	private Map<String, JComponent> map;
 	
 	/**
+	 * create form panel with default component (jtextfield).
+	 *
 	 * @param header
 	 * 		the header of panel
 	 * @param keyLabel
@@ -42,7 +50,18 @@ public class InputPanel extends JPanel {
 		setOpaque(true);
 	}
 	
-	
+	/**
+	 * create new input panel form.
+	 *
+	 * @param header
+	 * 		panel header
+	 * @param pairs
+	 * 		<ul>
+	 * 		<li>key of pair - label of input.</li>
+	 * 		<li>value of pair - component to input information.</li>
+	 * 		</ul>
+	 * @see Pair
+	 */
 	@SafeVarargs
 	public InputPanel(String header, Pair<String, ? extends JComponent>... pairs) {
 		map = new HashMap<>(pairs.length);
@@ -64,6 +83,12 @@ public class InputPanel extends JPanel {
 		setOpaque(true);
 	}
 	
+	/**
+	 * set header of panel
+	 *
+	 * @param header
+	 * 		string header
+	 */
 	private void setHeader(String header) {
 		JLabel headLb = new JLabel(header, SwingConstants.LEADING);
 		headLb.setFont(new Font(null, Font.BOLD, 15));

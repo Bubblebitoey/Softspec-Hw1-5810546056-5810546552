@@ -91,7 +91,7 @@ public class Location {
 	 * @return new position that same value but different variable
 	 */
 	@Override
-	public Location clone() {
+	public Object clone() {
 		return new Location(row + 1, col + 1);
 	}
 }

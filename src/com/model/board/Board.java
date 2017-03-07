@@ -225,4 +225,11 @@ public class Board {
 		}
 		return output;
 	}
+	
+	@Override
+	public Object clone() {
+		Board b = new Board(this.getSize(), this.getConsecutive());
+		b.board = board.clone();
+		return b;
+	}
 }

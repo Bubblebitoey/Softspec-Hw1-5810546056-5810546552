@@ -1,6 +1,13 @@
 package com.model.implementation;
 
 /**
+ * contains 2 value in the class<br>
+ * and have method that check contains method
+ * <ol>
+ * <li>key - can be duplication</li>
+ * <li>value - can be duplication</li>
+ * </ol>
+ *
  * @author kamontat
  * @version 1.0
  * @since Sun 05/Mar/2017 - 3:29 AM

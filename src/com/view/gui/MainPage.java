@@ -173,6 +173,7 @@ public class MainPage extends JDialog implements Runnable {
 			nameLb.setText("Winner player: " + game.getWinner());
 		}
 		
+		// end game
 		if (game.getGameState() != GameBoard.State.PLAYING && game.getGameState() != GameBoard.State.END) {
 			// TODO 3/6/2017 AD 10:56 PM do some thing when game end.
 		}

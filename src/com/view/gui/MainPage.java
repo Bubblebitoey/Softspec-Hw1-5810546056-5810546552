@@ -2,6 +2,7 @@ package com.view.gui;
 
 import com.controller.GameBoard;
 import com.model.player.Location;
+import com.view.gui.lib.DimensionUtilities;
 import com.view.gui.panel.OptionPanel;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class MainPage extends JDialog implements Runnable {
 	public MainPage(Window owner, GameBoard game) {
 		super(owner, "Game Page");
 		// set gui size
-		size = new Dimension(game.getSize().getRow() * BLOCK_SIZE, game.getSize().getColumn() * BLOCK_SIZE);
+		size = new Dimension(game.getSize().height * BLOCK_SIZE, game.getSize().width * BLOCK_SIZE);
 		
 		setModal(true);
 		setLocation(new Point(owner.getLocation().x + owner.getSize().width, owner.getLocation().y));
@@ -91,7 +92,7 @@ public class MainPage extends JDialog implements Runnable {
 	}
 	
 	private void initTable() {
-		table = new JTable(game.getSize().getRow(), game.getSize().getColumn()) {
+		table = new JTable(game.getSize().height, game.getSize().width) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -111,12 +112,17 @@ public class MainPage extends JDialog implements Runnable {
 		
 		table.setFont(new Font(null, Font.BOLD, 20));
 		
+		Dimension d = DimensionUtilities.operation(size, game.getSize(), DimensionUtilities.Operation.DIVIDE);
+		Dimension pd = DimensionUtilities.operation(table.getPreferredScrollableViewportSize(), game.getSize(), DimensionUtilities.Operation.DIVIDE);
+		
+		Dimension size = DimensionUtilities.maximum(d, pd);
+		
 		table.setMinimumSize(size);
-		table.setRowHeight(size.height / game.getSize().getColumn());
+		table.setRowHeight(size.height);
 		Enumeration<TableColumn> columns = table.getColumnModel().getColumns();
 		while (columns.hasMoreElements()) {
 			TableColumn c = columns.nextElement();
-			c.setPreferredWidth(size.width / game.getSize().getRow());
+			c.setPreferredWidth(size.width);
 		}
 		
 		table.addMouseListener(new MouseAdapter() {

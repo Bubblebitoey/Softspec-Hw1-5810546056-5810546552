@@ -59,8 +59,8 @@ public class Board {
 	 */
 	public Board(Shape s, int winCondition) {
 		size = s;
-		board = new Symbol[size.getH()][size.getW()];
-		this.consecutive = winCondition > size.getH() || winCondition < 1 ? winCondition > size.getW() || winCondition < 1 ? Math.max(size.getH(), size.getW()): winCondition: winCondition;
+		board = new Symbol[size.height][size.width];
+		this.consecutive = winCondition > size.height || winCondition < 1 ? winCondition > size.width || winCondition < 1 ? Math.max(size.height, size.width): winCondition: winCondition;
 		
 		resetBoard();
 	}
@@ -70,8 +70,8 @@ public class Board {
 		history.clearAllHistory();
 		
 		// init board
-		for (int i = 0; i < size.getH(); i++) {
-			for (int j = 0; j < size.getW(); j++) {
+		for (int i = 0; i < size.height; i++) {
+			for (int j = 0; j < size.width; j++) {
 				board[i][j] = Symbol.EMPTY;
 			}
 		}
@@ -167,7 +167,7 @@ public class Board {
 	 * @return true if in board size; otherwise, return false.
 	 */
 	public boolean isValid(Location p) {
-		return p != null && p.row >= 0 && p.row < size.getH() && p.col >= 0 && p.col < size.getW();
+		return p != null && p.row >= 0 && p.row < size.height && p.col >= 0 && p.col < size.width;
 	}
 	
 	/**
@@ -210,7 +210,7 @@ public class Board {
 	@Override
 	public String toString() {
 		String output = " 0 ";
-		for (int i = 1; i <= size.getW(); i++) {
+		for (int i = 1; i <= size.width; i++) {
 			output += String.format("%2d%1s", i, "");
 		}
 		output += "\n";

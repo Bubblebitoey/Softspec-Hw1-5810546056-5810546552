@@ -40,31 +40,13 @@ public abstract class Shape extends Dimension {
 		super(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 	
-	/**
-	 * get height in {@link Integer} format.
-	 *
-	 * @return height/row.
-	 */
-	public int getH() {
-		return height;
-	}
-	
-	/**
-	 * get width in {@link Integer} format.
-	 *
-	 * @return width/column.
-	 */
-	public int getW() {
-		return width;
-	}
-	
 	@Override
 	public String toString() {
 		return super.toString();
 	}
 	
 	public static Shape checkValid(Shape shape) throws NegativeShapeSize {
-		if (shape.getH() > 0 && shape.getW() > 0) return shape;
+		if (shape.height > 0 && shape.width > 0) return shape;
 		throw new NegativeShapeSize();
 	}
 	
